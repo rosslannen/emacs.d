@@ -1,0 +1,16 @@
+# simple-app
+
+A simple twitter/blog-like SPA, and local backend server. Currently
+the SPA is not completely hooked up to the backend routes, and the
+create new post forms do not actually yet create new forms. Both the
+javascript SPA front end, and the server backend running on the JVM
+were written in Clojure, making for 2 seperate program components for
+the Language Explore Project.
+
+## Usage
+
+From the project root run:
+
+    $ java -jar target/uberjar/simple-app-0.1.0-standalone.jar
+    
+Then navigate to localhost:3000/

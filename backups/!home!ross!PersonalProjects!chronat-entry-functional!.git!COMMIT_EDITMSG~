@@ -1,0 +1,24 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Transport/Pages/About.cshtml
+#	modified:   Transport/Pages/Athletes.cshtml
+#	modified:   Transport/Pages/Contact.cshtml
+#	modified:   Transport/Pages/EditAthlete.cshtml
+#	modified:   Transport/Pages/EditAthlete.cshtml.cs
+#	modified:   Transport/Pages/EditMeet.cshtml
+#	modified:   Transport/Pages/Error.cshtml
+#	modified:   Transport/Pages/Index.cshtml
+#	modified:   Transport/Pages/MeetOverview.cshtml
+#	modified:   Transport/Pages/Meets.cshtml
+#	modified:   Transport/Pages/Privacy.cshtml
+#	modified:   Transport/Pages/Shared/_Layout.cshtml
+#
+# Untracked files:
+#	Transport/transport.sqlite
+#

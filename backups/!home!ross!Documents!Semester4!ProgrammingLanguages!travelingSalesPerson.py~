@@ -1,0 +1,239 @@
+#!/usr/bin/python3
+from pdb import set_trace
+import math
+import itertools
+from time import clock
+import random
+
+
+def readPoints(filename):
+    """Reads points from specified input file"""
+    points = []
+    f = open(filename)
+    num = str(f.readline())
+    for line in f:
+        points.append(tuple(
+            [int(x) for x in line.split()]))
+    return points
+
+
+def findDistance(p0, p1):
+    """calculates distance between 2 points"""
+    p = math.pow
+    return math.sqrt(p(p1[0] - p0[0], 2) + p(p1[1] - p0[1], 2))
+
+
+def findPathDistance(path):
+    """Finds distance of a path"""
+    return sum(
+        [findDistance(p0, p1)
+            for p0, p1
+            in zip(path[:-1], path[1:])])
+
+
+def solveNearestNeighbor(points):
+    """
+    Solve for path using the nearest neighbor
+    inputs:
+        points - list of points that are to be treversed
+    output:
+        result in the form {"path": path,
+                            "distance": distance,
+                            "time": time,
+                            "n": numPoints}
+    """
+
+    n = len(points)               # Number of points
+
+    path = []                     # List holding the final solved path of points
+
+    # Start timer
+    startTime = clock()
+
+    # Store first point, designated as first point in list O(n)
+    startPoint = points[0]
+    # O(n), removal at beginning not very efficient
+    points.remove(startPoint)
+    path.append(startPoint)       # O(1)
+
+    currentPoint = startPoint     # Stores current list being evaluated
+
+    while(points):                # runs n times O(n)
+        # Calculate distances from current point to other remaining points
+        distances = {point: findDistance(currentPoint, point)
+                     for point in points}  # n - i comparisons O(n)
+
+        # Starts at maximum, works down from there
+        leastDistance = max(distances.values())  # O(n) maximum
+        nextPoint = ()                          # Holder for next point to solve for
+
+        # Find point with the least distance away
+        for point, distance in distances.items():  # O(n)
+            # all O(1)
+            if distance <= leastDistance:
+                leastDistance = distance
+                nextPoint = point
+
+        # Move point from possible points to end of path, update current point
+        points.remove(nextPoint)             # O(n) maximum
+        path.append(nextPoint)               # O(1)
+        currentPoint = nextPoint             # O(1)
+
+    # Put the starting point back and the end O(1)
+    path.append(startPoint)
+
+    # Stop clock
+    endTime = clock()
+
+    # Path is solved for, now just iterate to find total distance
+    pathDistance = findPathDistance(path)
+
+    return {"path": path,
+            "distance": pathDistance,
+            "time": (endTime - startTime),
+            "n": n}
+
+
+def solveExhaustive(points):
+    """
+    Solve for path using an exhaustive method
+    inputs:
+        points - list of points that are to be treversed
+    output:
+        results in the form {"path": path,
+                             "distance": distance,
+                             "time": time,
+                             "n": numPoints}
+    """
+    n = len(points)            # Number of points
+
+    path = []                  # List storing final solved path
+
+    # Ensure all paths start at same place, and reduce number of perms
+    startPoint = points[0]
+    points.remove(startPoint)
+
+    # Use python library to find all permutations of the points
+    permutations = [list(perm)
+                    for perm
+                    in itertools.permutations(points)]
+    # For each permutation, add the first element at the beginning
+    # and end to make complete path
+    for perm in permutations:
+        perm.insert(0, startPoint)
+        perm.append(startPoint)
+
+    # Start timer
+    startTime = clock()
+
+    path = permutations[0]                           # Holds final path
+    pathDistance = findPathDistance(
+        permutations[0])  # Holds final path distance
+    for path in permutations:                        # O(n!)
+        distance = findPathDistance(path)            # O(n)
+        # all O(1)
+        if distance < pathDistance:
+            pathDistance = distance
+            path = path
+
+    # Stop timer
+    endTime = clock()
+
+    return {"path": path,
+            "distance": pathDistance,
+            "time": (endTime - startTime),
+            "n": n}
+
+
+def displayResults(results, algo, points, verbose=0):
+    """
+    Display the results in a pretty way
+    inputs:
+        results - dictionary containing results from a found solution
+        algo - string with algorithm name used
+        points - points that were used
+        verbose - level of verbosity. non-0 displays more stuff
+    output:
+        None
+    """
+    print(algo, "Results:")
+    print()
+    if verbose:
+        print("Points:", points)
+    print("Number of points:", results["n"])
+    if verbose:
+        print("Solved path:", results["path"])
+    print("Path distance:", "{:f}".format(results["distance"]))
+    print("Time to solve:", "{:f}".format(results["time"]))
+    print()
+
+
+def generateRandomPoints(filename, n):
+    """
+    Generate a file of random points to solve
+    inputs:
+        filename - name of file to output to
+        n - number of points to generate
+    outputs:
+        filename - name of file written to
+    """
+    points = []
+    for i in range(n):
+        point = None
+        while point is None or point in points:
+            point = (random.randrange(0, 1000),
+                     random.randrange(0, 1000))
+        points.append(point)
+
+    f = open(filename, mode='w')
+    f.write(str(n) + '\n')
+    for point in points:
+        f.write(str(point[0]) + ' ' + str(point[1]) + '\n')
+    f.close()
+    return filename
+
+
+if __name__ == '__main__':
+    random.seed()
+
+    # nearest neighbor runs
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 500))
+        NNResults = solveNearestNeighbor(points[:])
+        displayResults(NNResults, "Nearest Neighbor", points)
+
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 1000))
+        NNResults = solveNearestNeighbor(points[:])
+        displayResults(NNResults, "Nearest Neighbor", points)
+
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 2000))
+        NNResults = solveNearestNeighbor(points[:])
+        displayResults(NNResults, "Nearest Neighbor", points)
+
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 5000))
+        NNResults = solveNearestNeighbor(points[:])
+        displayResults(NNResults, "Nearest Neighbor", points)
+
+    # exhaustive runs
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 8))
+        EResults = solveExhaustive(points[:])
+        displayResults(EResults, "Exhaustive", points)
+
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 9))
+        EResults = solveExhaustive(points[:])
+        displayResults(EResults, "Exhaustive", points)
+
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 10))
+        EResults = solveExhaustive(points[:])
+        displayResults(EResults, "Exhaustive", points)
+
+    for _ in range(3):
+        points = readPoints(generateRandomPoints('random.txt', 11))
+        EResults = solveExhaustive(points[:])
+        displayResults(EResults, "Exhaustive", points)

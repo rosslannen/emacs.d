@@ -1,0 +1,110 @@
+ls
+ll
+ls
+cat output.txt 
+8 + 8 + 8 + 6 + 7 + 5 + 5 + 5
+(8 + 8 + 8 + 6 + 7 + 5 + 5 + 5)
+(+ 8 8 8 6 7 5 5 5)
+cat example.txt 
+(+ 4 3 1 4 2 2 4 3 1 6 6 1 5 5 5)
+exit
+xelatex -shell-escape report.tex
+dotnet restore
+up
+cd ..
+alias up='cd ..'
+up
+ls
+ll
+ls -l
+ls
+exit
+up
+cd ..
+dotnet run
+dotnet run
+dotnet --version
+dotnet run
+dotnet run
+dotnet run
+dotnet restore
+dotnet restore
+dotnet public -r debian-x64 --output bin/dist/debian
+dotnet publish -r debian-x64 --output bin/dist/debian
+dotnet restore
+ls
+cd ..
+ls
+./run_tests.py 
+./run_tests.py --d2
+up
+cd ..
+bin/rails server
+bin/rails routes
+bin/rails generate controller Articles
+bin/rails server
+bin/rails server
+bin/rails generate model Article title:string text:text
+bin/rails db:migrate
+alias ff 'find-file $1'
+alias d 'dired $1'
+alias ll 'ls -l -A'
+alias up 'cd ..'
+up
+cd ross/
+l
+ll
+cd Documents/PersonalProjects/
+ll
+cd Django/
+d .
+python -m django --version
+pip3 install django
+python -m django --version
+sudo pip3 install django
+python -m django --version
+python3 -m django --version
+pip3 uninstall django
+python3 -m django --version
+django-admin startproject mysite
+ll
+dd
+d
+cd mysite/
+./manage.py runserver
+./manage.py runserver
+./manage.py startapp polls
+./manage.py runserver
+./manage.py migrate
+d
+./manage.py makemigrations polls
+d
+./manage.py sqlmigrate polls 0001
+./manage.py migrate
+./manage.py shell
+./manage.py shell
+./manage.py shell
+./manage.py createsuperuser
+./manage.py runserver
+./manage.py runserver
+./manage.py runserver
+./manage.py runserver
+./manage.py runserver
+./manage.py runserver
+./manage.py test polls
+./manage.py test polls
+./manage.py test polls
+./manage.py test polls
+./manage.py test polls
+./manage.py test polls
+./manage.py test polls
+./manage.py runserver
+./manage.py runserver
+./manage.py runserver
+lein new compojure hello-world
+ll
+lein ring server-headless
+cd hello-world/
+lein ring server-headless
+up
+lein new restful-clojure

@@ -1,0 +1,10 @@
+#!/usr/bin/env slyther
+(define (prompt p)
+  (lambda () (->> p
+                  (input)
+                  (float))))
+(define base (prompt "What is the length of the base of your triangle? "))
+(define height (prompt "What is the height of your triangle? "))
+(print "The area is " (-> base
+                          (* height)
+                          (/ 2)))

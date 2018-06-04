@@ -1,0 +1,294 @@
+(ns simple-app-cljs.core
+  (:require [re-frame.core :as rf]
+            [day8.re-frame.http-fx]
+            [reagent.core :as reagent]
+            [ajax.core :as ajax]
+            [clojure.string :as str]))
+
+;; -- Domino 1 - Event Dispatch -----------------------------------
+
+(defn dispatch-page-change
+  [page]
+  (fn [] (rf/dispatch [:page page])))
+
+(defn dispatch-navbar-toggle
+  []
+  (fn [] (rf/dispatch [:navbar-active])))
+
+(defn server-request-posts
+  []
+  (fn [] (rf/dispatch [:request-posts])))
+
+(defn dispatch-change-field
+  [page field]
+  (fn [evt] (rf/dispatch [:change-field
+                          page
+                          field
+                          (-> evt .-target .-value)])))
+
+(defn server-create-post
+  []
+  (fn [] (rf/dispatch [:create-post])))
+
+(defn server-delete-post
+  [post-id]
+  (fn [] (rf/dispatch [:delete-post post-id])))
+
+;; -- Domino 2 - Event Handlers -----------------------------------
+;; -- Update
+
+(rf/reg-event-db
+ :initialize
+ (fn [_ _]
+   {:time (js/Date.)
+    :page :home
+    :navbar-active false
+    :new-post-fields {:title ""
+                      :body ""
+                      :first ""
+                      :last ""}
+    :loading? false
+    :error? false}))
+
+(rf/reg-event-db
+ :page
+ (fn [db [_ page]]
+   (assoc db :page page)))
+
+(rf/reg-event-db
+ :navbar-active
+ (fn [db _]
+   (assoc db :navbar-active (not (:navbar-active db)))))
+
+(rf/reg-event-fx
+ :request-posts
+ (fn
+   [{db :db} _]
+   {:http-xhrio {:method :get
+                 :uri "/posts"
+                 :format (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success [:request-posts-success]
+                 :on-failure [:request-posts-failure]}
+    :db (assoc db :loading? true)}))
+
+(rf/reg-event-db
+ :change-field
+ (fn
+   [db [_ page field value]]
+   (assoc-in db [page field] value)))
+
+(rf/reg-event-fx
+ :create-post
+ (fn
+   [{{new-post-fields :new-post-fields} :db} _]
+   {:http-xhrio {:method :post
+                 :uri "/post"
+                 :params new-post-fields
+                 :format (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success [:create-post-success]
+                 :on-failure [:create-post-failure]}}))
+
+(rf/reg-event-fx
+ :delete-post
+ (fn
+   [_ [_ post-id]]
+   {:http-xhrio {:method :delete
+                 :uri (str "/post/" post-id)
+                 :format (ajax/json-request-format)
+                 :response-format (ajax/json-response-format {:keywords? true})
+                 :on-success [:request-posts]
+                 :on-failure [:delete-post-failure]}}))
+
+;; -- Domino 3 - Effect Handlers ----------------------------------
+
+(rf/reg-event-db
+ :request-posts-success
+ (fn
+   [db [_ response]]
+   (-> db
+       (assoc :loading? false)
+       (assoc :posts (js->clj response :keywordize-keys true)))))
+
+(rf/reg-event-db
+ :request-posts-failure
+ (fn [db [_ response]]
+   (assoc db :error true)))
+
+(rf/reg-event-fx
+ :create-post-success
+ (fn
+   [{db :db} _]
+   {:dispatch [:request-posts]
+    :db (-> db
+            (assoc :page :home)
+            (assoc-in [:new-post-fields :title] "")
+            (assoc-in [:new-post-fields :body] "")
+            (assoc-in [:new-post-fields :first] "")
+            (assoc-in [:new-post-fields :last] ""))}))
+
+(rf/reg-event-db
+ :create-post-failure
+ (fn [db [_ response]]
+   (assoc db :error true)))
+
+(rf/reg-event-db
+ :create-post-failure
+ (fn [db [_ response]]
+   (assoc db :error true)))
+
+;; -- Domino 4 - Subscription Handlers ----------------------------
+
+(rf/reg-sub
+ :time
+ (fn [db _]
+   (:time db)))
+
+(rf/reg-sub
+ :page
+ (fn [db _]
+   (:page db)))
+
+(rf/reg-sub
+ :posts
+ (fn [db _]
+   (:posts db)))
+
+(rf/reg-sub
+ :navbar-active
+ (fn [db _]
+   (:navbar-active db)))
+
+(rf/reg-sub
+ :loading?
+ (fn [db _]
+   (:loading? db)))
+
+(rf/reg-sub
+ :initialized?
+ (fn [db _]
+   (not (empty? db))))
+
+(rf/reg-sub
+ :error?
+ (fn [db _]
+   (:error? db)))
+
+(rf/reg-sub
+ :new-post-fields
+ (fn [db _]
+   (:new-post-fields db)))
+
+;; -- Domino 5 - View DOM -----------------------------------------
+;; -- View
+
+(defn navbar
+  [navbar-active]
+  ( let [active (if navbar-active {:class "is-active"})]
+   [:nav.navbar.is-link.is-mobile
+    {:role "navigation"
+     :aria-label "main navigation"}
+    [:div.container
+     [:div.navbar-brand
+      [:a {:on-click (dispatch-page-change :home)}
+       [:h2.title.is-2 "Bloggy "]]
+      [:div.navbar-burger
+       (assoc active :on-click (dispatch-navbar-toggle))
+       [:span] [:span] [:span]]]
+     [:div.navbar-menu active
+      [:div.navbar-start
+       [:a.navbar-item {:on-click (dispatch-page-change :home)} "Home"]
+       [:a.navbar-item {:on-click (dispatch-page-change :new-post)} "New Post"]]
+      [:div.navbar-end]]]]))
+
+(defn post
+  [{:keys [id title body author_first author_last author_mi timestamp]}]
+  [:div.box
+   [:article.media
+    [:div.media-content
+     [:div.content
+      [:h1 title]
+      [:p
+       [:strong
+        (str author_first " " author_last " ")]
+       [:small (str timestamp)]
+       [:br] body]]]
+    [:div.media.right
+     [:button.delete.is-large {:on-click (server-delete-post id)}]]]])
+
+(defn posts
+  []
+  [:div
+   (map post @(rf/subscribe [:posts]))])
+
+(defn home-page
+  []
+  [:div
+   [:div.content
+    [:h1.title "Posts"]]
+   [posts]])
+
+(defn new-post-page
+  [{:keys [title body first last]}]
+  (let [change-field
+        (partial dispatch-change-field :new-post-fields)]
+    [:div
+     [:div.field
+      [:label.label.is-large "Title"]
+      [:div.control
+       [:input.input {:type "text"
+                      :value title
+                      :on-change (change-field :title)
+                      :placeholder "Title"}]]]
+     [:div.field
+      [:label.label "Body"]
+      [:div.control
+       [:textarea.textarea {:value body
+                            :on-change (change-field :body)
+                            :placeholder "Put your post here"}]]]
+     [:div.field
+      [:label.label "Author"]
+      [:div.control
+       [:input.input {:type "text"
+                      :value first
+                      :on-change (change-field :first)
+                      :placeholder "First Name"}]]]
+     [:div.field
+      [:div.control
+       [:input.input {:type "text"
+                      :value last
+                      :on-change (change-field :last)
+                      :placeholder "Last Name"}]]]
+     [:div.field
+      [:div.control
+       [:button.button.is-link
+        {:on-click (server-create-post)}
+         "Publish"]]]]))
+
+(defn ui
+  []
+  (let [page @(rf/subscribe [:page])
+        navbar-active @(rf/subscribe [:navbar-active])
+        initialized @(rf/subscribe [:initialized?])
+        error @(rf/subscribe [:error?])
+        new-post-fields @(rf/subscribe [:new-post-fields])]
+    (cond
+      (not initialized) [:div "Initializing"]
+      error [:div "Error"]
+      :else
+      [:div
+       (navbar navbar-active)
+       [:div.container
+        (case page
+          :home (home-page)
+          :new-post (new-post-page new-post-fields))]])))
+
+;; -- Entry Point -------------------------------------------------
+
+(defn ^:export run
+  []
+  (rf/dispatch [:initialize])
+  (rf/dispatch [:request-posts])
+  (reagent/render [ui] ;; mount the ui into <div id="app" />
+                  (js/document.getElementById "app")))

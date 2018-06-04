@@ -1,0 +1,12 @@
+(ns authentication.routes.auth
+  (:require [authentication.layout :as layout]
+            [authentication.db.core :as db]
+            [compojure.core :refer [defroutes GET POST]]
+            [ring.util.response :refer [response]]))
+
+(defn login-page []
+  (layout/render
+   "login.html"))
+
+(defroutes login-routes
+  (GET "/" [] (login-page)))

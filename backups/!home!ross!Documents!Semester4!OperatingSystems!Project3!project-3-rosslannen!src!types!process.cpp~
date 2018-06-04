@@ -1,0 +1,21 @@
+#include "types/process.h"
+
+using namespace std;
+
+ostream& operator<<(ostream& os, Process::Type type) {
+  switch (type) {
+  case Process::Type::SYSTEM:
+    os << "[SYSTEM]";
+    break;
+  case Process::Type::INTERACTIVE:
+    os << "[INTERACTIVE]";
+    break;
+  case Process::Type::NORMAL:
+    os << "[NORMAL]";
+    break;
+  case Process::Type::BATCH:
+    os << "[BATCH]";
+    break;
+  }
+  return os;
+}

@@ -1,0 +1,59 @@
+#+TITLE: Operating Systems Study Guide
+#+AUTHOR: Ross Lannen
+
+* Computer Systems Overview
+  - System Call :: Request to the operating system to perform some action outside of the program execution space
+  - Data Registers :: Registers in the CPU that hold the data currently being operated on
+  - Address Registers :: Registers in the CPU that hold memory locations to load into the data registers
+  - PC :: Register that holds the address of the currently executing instruction
+  - Instruction Register :: Register that holds the current instruction being executed
+  - PSW :: Some other register?
+  - Interrupt :: Signal sent to the CPU telling it to execute something else
+  - Interrupt Flag :: Flag that signals an interrupt has been sent
+  - Hit Ratio :: Percentage of the time a piece of data is found at a specific level of memory
+  - Temporal Locality :: The access of the same data in memory multiple times in a certain amount of time
+  - Spatial Locality :: The access of data in memory that is close together spatially in memory
+  - Cache :: Small fast memory that is used to store items often accessed by a process
+  - Memory/Storage Hierarchy :: Tiered memory system where fast small memory is close to the CPU, and large slow storage is far away
+        
+* Operating Systems Overview
+  - OS :: Program that provides an interface between the user and the hardware
+  - Kernel :: Core functionality of the OS, first piece that is loaded upon booting
+  - Turnaround Time :: Time it takes to complete a job
+  - Multiprogramming :: The ability to hold multiple proesses in memory and switch between them
+  - Time Slice :: Amount of time given to a program to execute on a CPU before being preempted
+  - Process Switch :: Task of changing the currently executed proccess on a CPU
+  - Process :: A set of instructions and the data associated with it to complete a task
+  - Base Register :: Starting address of a region of memory occupied by a process
+  - Limit Register :: Ending address of a region of memory occupied by a process
+  - Thread :: A set of instructions belonging to a process. Can be multiple threads that execute cooperatively
+  - Multi-Threaded Process :: Process that contains multiple threads of execution
+  - DOM :: Degree of multiprogramming. Is the maximum number of processes that a single process system can accommodate efficiently
+           
+* Process Description and Control
+  - Swapping :: The steps of taking one process off of the CPU, and putting another on
+  - Ready Queue :: Queue of processes that are in memory and ready to be executed
+  - Event Queues :: Queue of processes waiting on an event to occur before they can become unblocked and changed to ready
+  - Preemption :: A process bumping another running process off of the CPU due to a time slice expiring
+  - Process Switch :: Task of changing the currently executing process
+  - Fork :: Creates a duplicate of a running process with a different PID
+  - Exec :: Executes a program, completely replacing the old process space with the new
+  - Wait :: Waits for a child process to terminate before continuing execution
+  - Pipe :: File descriptors that can be written and read by 2 different processes to communicate
+
+* Threads
+  - ULT :: User Level Thread. 
+  - KLT :: Kernel Level Thread. 
+           
+* CPU Scheduling
+  - Throughput :: 
+  - CPU Utilization ::
+  - CPU Efficiency ::
+  - Average Turnaround Time :: 
+  - Normalized Turnaround Time ::
+  - Response Time ::
+  - Waiting Time ::
+  - Gantt Chart ::
+  - Starvation ::
+  - Aging ::
+  - Time Slice ::

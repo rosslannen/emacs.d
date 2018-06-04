@@ -1,0 +1,4 @@
+alias up cd ..
+alias ll ls -l -A
+alias d dired $1
+alias ff find-file $1

@@ -1,0 +1,143 @@
+#+TITLE: Dynamic Programming
+#+AUTHOR: Ross Lannen, Evan Bergo, Peng Gao
+#+OPTIONS: toc:nil
+#+LATEX_COMPILER: xelatex -shell-escape
+#+LATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{algpseudocode}
+* Dynamic Programming Algorithm
+** Recursive Approach
+** Dynamic Pseudocode
+** Traceback Algorithm
+* Algorithm Complexity
+* Implimentation
+** Code
+*** Global Variables
+Global Variables that control behavior of the algorithm. These are set by the
+read_file function given later, and correspond directly to values read from
+the input file.
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC python3
+n = 15  # number of days until closing
+L = 6  # capacity of tank
+P = 17  # fixed delivery price
+c = 4  # price per gallon per night
+g = [4, 3, 1, 4, 2, 2, 4, 3, 1, 6, 6, 1, 5, 5, 5]  # projected orders
+#+END_SRC
+*** Dynamic Algorithm Implimentation
+Dynamic solution to gas station problem for Algo
+Project 3. Calculates entire table regardless
+of inputs, inputs only used to pull final value
+out of table.
+
+inputs
+    days_remaining (int): days until close
+    gallons_remaining (int): gallons of gas remaining
+                             from night before
+
+return
+    (int, 2D list):
+    (minimum cost for given inputs, table of values)
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC python3
+def dynamic_gas(days_remaining, gallons_remaining):
+    table = [[None for x in range(L + 1)] for y in range(n + 1)]
+    table[0] = [0] * (L + 1)
+    for i in range(1, len(table)):
+        for j in range(0, len(table[i])):
+            gallons_needed = g[len(g) - i]
+            excess = gallons_needed - j
+            lower_bound = excess if excess > 0 else 0
+            upper_bound = gallons_needed + L - j
+            min_cost = -1
+            for gallons_purchased in range(lower_bound, upper_bound + 1):
+                current_cost = 0
+                if gallons_purchased != 0:
+                    current_cost = P + \
+                        (j + gallons_purchased - gallons_needed) * c
+                else:
+                    current_cost = (j - gallons_needed) * c
+                total_cost = current_cost + \
+                    table[i - 1][j + gallons_purchased - gallons_needed]
+                if min_cost == -1 or total_cost < min_cost:
+                    min_cost = total_cost
+            table[i][j] = min_cost
+    return (table[days_remaining][gallons_remaining], table)
+#+END_SRC
+*** Traceback Algorithm Implimentation
+Traces back through table from dynamic solution to
+find where purchases were made, and how much they
+were for.
+
+inputs
+    table (2D list): 2D table of inputs from dynamic solution
+
+return
+    list of (int, int): list of tuples in form (day number, gallons)
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC python3
+def traceback(table):
+    purchases = []
+    j = 0
+    for i in range(len(table) - 1, 0, -1):
+        gallons_needed = g[len(g) - i]
+        lower_bound = gallons_needed - j if gallons_needed - j > 0 else 0
+        upper_bound = gallons_needed + L - j
+        min_cost = -1
+        final_gallons_purchased = 0
+        for gallons_purchased in range(lower_bound, upper_bound + 1):
+            current_cost = 0
+            if gallons_purchased != 0:
+                current_cost = P + (j + gallons_purchased - gallons_needed) * c
+            else:
+                current_cost = (j - gallons_needed) * c
+            total_cost = current_cost + \
+                table[i - 1][j + gallons_purchased - gallons_needed]
+            if min_cost == -1 or total_cost < min_cost:
+                min_cost = total_cost
+                next_j = j + gallons_purchased - gallons_needed
+                final_gallons_purchased = gallons_purchased
+        j = next_j
+        if (final_gallons_purchased != 0):
+            purchases.append((len(table) - i, final_gallons_purchased))
+    return purchases
+#+END_SRC
+*** Helper Functions
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC python3
+def read_file(filename):
+    """
+    Read from file with format given by the problem
+    document
+
+    inputs
+        filename (str): file to read from
+
+    return
+        0 on success
+    """
+    with open(filename) as f:
+        n, L, P, c = f.readline().split()
+        g = f.readline().split()
+    return 0
+#+END_SRC
+#+BEGIN_SRC python3
+
+#+END_SRC
+
+*** Sample Execution
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC python3
+
+#+END_SRC
+** Output
+*** Input File
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC text
+
+#+END_SRC
+*** Output
+#+ATTR_LATEX: :options fontsize=\footnotesize
+#+BEGIN_SRC text
+
+#+END_SRC

@@ -1,0 +1,13 @@
+Host isengard
+	HostName isengard.mines.edu
+	User rlannen
+	ProxyCommand ssh imagine nc %h %p
+
+Host imagine
+	HostName imagine.mines.edu
+	User rlannen
+
+Host bb136
+	User rlannen
+	HostName bb136-01
+	ProxyCommand ssh imagine nc %h %p

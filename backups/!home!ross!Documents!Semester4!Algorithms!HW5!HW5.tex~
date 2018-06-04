@@ -1,0 +1,69 @@
+\documentclass[letterpaper]{article}
+\usepackage{asmath}
+\usepackage{algpseudocode}
+\usepackage[margin=1in]{geometry}
+\title{Homework 5}
+\author{Ross Lannen}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item
+  Exercise 8--12 (Pg 312)
+  \begin{itemize}
+  \item
+    Recursive Idea Description:
+
+    Base case --- When remaining breaks = 1, the cost is the length of the string remaining.
+
+    Recursive call --- The cost of breaking at the current length is added to the smallest
+    of the recursive calls added together for breaks below the current break plus breaks
+    above the current break.
+
+  \item
+    Recurrence Relation:
+
+    \begin{algorithmic}
+      \Function{$BreakString$}{$startIndex$, $endIndex$, $breaks$}
+
+      \If{\Call{$size$}{$breaks$} $== 1$}
+      \State{} \Return{} $endIndex - startIndex$
+      \EndIf{}
+      
+      \State{} $minval \gets MAX$
+      \ForAll{$break \gets breaks$}
+      \State{} $lbreaks \gets breaks < break$
+      \State{} $rbreaks \gets breaks > break$
+      \State{} $lval \gets$ \Call{$BreakString$}{$startIndex$, $break$, $lbreaks$}
+      \State{} $rval \gets$ \Call{$BreakString$}{$break$, $endIndex$, $rbreaks$}
+      \If{$rval + lval < minval$}
+      \State{} $minval = rval + lval$
+      \EndIf{}
+      \EndFor{}
+      \State{} \Return{} $minval$
+      \EndFunction{}
+    \end{algorithmic}
+
+  \item
+    Partial Results Table
+
+  \item
+    Dynamic Algorithm
+
+  \item
+    Traceback Step
+  \end{itemize}
+\item
+  Excercise 8--14 (Pg 313): Not an optimization
+
+  \begin{itemize}
+  \item
+    Recurrence:
+
+    Base Case --- if g = 0, return 1 if i = 0, and 0 if i > 0
+    
+    Recurrence Relation --- 
+  \end{itemize}
+
+\end{itemize}
+\end{document}

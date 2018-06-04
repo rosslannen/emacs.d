@@ -1,0 +1,16 @@
+using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Threading.Tasks;
+
+namespace Transport.Pages.TagHelpers
+{
+    public class TextInputTagHelper : TagHelper
+    {
+        public string Attribute { get; set; }
+        public string Label { get; set; }
+        public string Placeholder { get; set; }
+        public override void Process(TagHelperContext context, TagHelperOutput output)
+        {
+            // Modify output
+        }
+    }
+}

@@ -1,0 +1,84 @@
+\documentclass[letterpaper]{article}
+\usepackage{graphicx}
+\usepackage[margin=1in]{geometry}
+\graphicspath{ {./} }
+\title{Homework 7}
+\author{Ross Lannen}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item
+  RQ 5.7 --- List the requirements for mutual exclusion
+
+  1. Mutual Exclusion must be enforced: Only one process at a time is allowed into its critical section, among all processes that have critical sections for the same resource or shared object.
+
+  2. A process that halts in its noncritical section must do so without interfering with other processes.
+
+  3. It must not be possible for a process requiring access to a critical section to be delayed indefinitely: no deadlock or starvation.
+
+  4. When no process is in a critical section, any process that requests entry to its critical section must be permitted to enter without delay.
+
+  5. No Assumptions are made about relative process speeds or number of processors.
+
+  6. A process remains inside its critical section for a finite time only.
+\item
+  RQ 5.8 --- What operations can be performed on a semaphore
+
+  Initialize, decrement, and increment.
+\item
+  RQ 5.9 --- What is the difference between binary and general semaphores?
+
+  General: can be any integer value
+
+  Binary: can either be 0 or 1
+\item
+  RQ 5.10 --- What is the difference between strong and weak semaphores?
+
+  A strong semaphore unblocks processes with a FIFO policy. A weak semaphore does not specify an order.
+\item
+  RQ 5.11 --- What is a monitor?
+
+  A monitor is a programming language construct that encapsulates variables, access procedures, and initialization code within an abstract data type. The monitor's variable maay only be accessed via its access procedures and only one process may be actively accessing the monitor at any one time. The access procedures are critical sections. A monitor may have a queue or processes that are waiting to access it.
+\item
+  P 5.3
+
+  P1: $x = 10$
+
+  P1: $x = x - 1$
+
+  P1: $x = x + 1$
+  
+  P2: $x = 10$
+  
+  P2: $x = x - 1$
+  
+  P1: if ($x \neq 10$)
+  
+  P2: $x = x + 1$
+
+  P1: printf (``x is \%d'', x)
+\item
+  P 5.13
+
+
+\item
+  P 5.14
+
+
+\item
+  P 5.21
+
+
+\item
+  P 5.25
+
+
+\item
+  P 6.1
+
+
+\item
+  P 6.14
+\end{itemize}
+\end{document}

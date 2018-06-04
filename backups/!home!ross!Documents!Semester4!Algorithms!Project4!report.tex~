@@ -1,0 +1,347 @@
+% Created 2018-04-21 Sat 16:39
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{minted}
+\usepackage[margin=1in]{geometry}
+\usepackage{minted}
+\author{Ross Lannen}
+\date{\today}
+\title{Graph Modeling}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\section{Problem Modeling}
+\label{sec-1}
+\subsection{Graph Modeling}
+\label{sec-1-1}
+To model this problem, I created a graph with 2 nodes for each square. Each node
+contained the coordinates of the node, and what direction the node was entered from ---
+either horizontally/vertically or diagonally. The edges from each node indicate possible
+jumps that can be made from that coordinate given the direction of entry. For red squares
+if they are entered diagonally, they only link to the horizonally/vertically entered nodes
+from the H/V direction, and vice-versa for H/V entered nodes. Normal squares only link to
+nodes with the same mode of entry in that mode of direction.
+\subsection{Picture of Graph}
+\label{sec-1-2}
+Pictured is the starting node, and 3 layers of association from it. The third value of
+the node labels cooresponds to whether the node is from entering horizonally/vertically(False)
+or diagonally(True).
+\includegraphics[width=.9\linewidth]{./graph.png}
+\subsection{Algorithm Identification}
+\label{sec-1-3}
+I used a Breadth First Search for to traverse the graph, as it is the algorithm of choice
+for finding shortest paths of traversals on unweighted graphs.
+\subsection{Correctness}
+\label{sec-1-4}
+A BFS run on the starting point --- (1, 1, H/V) in my case --- will create a breadth first
+tree with all squares that are possible to jump to on the maze. If a possible solution exists
+one of the 2 nodes representing the goal point in the bottom corner --- (8, 8, H/V) or
+(8, 8, DIAG) for the example input --- will be present in the tree. The full path can be found
+by tracing the tree from this goal point back to the start point. If the goal point is not found
+in the tree created by the BFS, then it cannot be reached and the problem has no solution.
+\section{Implimentation}
+\label{sec-2}
+Code for solving maze problem. When run from the command-line, it expects a file named
+sample$\backslash$$_{\text{input}}$.txt to be in the current directory, and writes the output to a file named
+sample$\backslash$$_{\text{output}}$.txt if a solution is found. If no solution is found, the program prints
+"No path found", and then exits. Different filenames can be used by running
+main(infile, outfile) interactively from the python3 prompt.
+\begin{minted}[]{python3}
+#!/usr/bin/env python3
+"""
+Maze solver for Algorithms project 4. Solves the Jumping Jim
+maze problem using a graph representation of the maze and
+a graph searching algorithm.
+"""
+from collections import deque
+from copy import deepcopy
+
+
+def read_input(filename):
+    """
+    Read input file into 2D list representing the maze
+    Input:
+        filename (str) - filename to read from
+    Output:
+        2D list of tuples representing maze
+        The first element is the value of the square,
+        and the second is whether it is a red square
+        or not.
+    Example Output:
+    [[(4, False), (2, False), (2, True)],
+     [(3, False), (5, False), (3, False)],
+     [(4, False), (3, False), (2, False)]]
+    """
+    board = []
+    with open(filename, 'r') as f:
+        rows, columns = map(int, f.readline().split())
+        for line in f:
+            board.append([(abs(int(x)), int(x) < 0)
+                          for x
+                          in line.split()])
+    # error checking
+    verify_input(board, rows, columns)
+    return board
+
+
+def verify_input(board, rows, columns):
+    """
+    Verify that the board loaded in from imput is correctly formatted,
+    and that the values make sense
+    Input:
+        board (2d list of tuples) - board representation as given
+                                    in read_input()
+    Output:
+        None
+    """
+    assert len(board) == rows
+    for row_n, row in enumerate(board):
+        assert len(row) == columns
+        for col_n, (num, red) in enumerate(row):
+            if row_n == rows - 1 and col_n == columns - 1:
+                assert num == 0
+            else:
+                assert num != 0
+
+
+def build_graph(board):
+    """
+    Constructs graph upon which a search will be run upon.
+    Input:
+        board (2d list of tuples) - board representation as given
+                                    in read_input()
+    Output:
+        dictionary representing the graph to be searched
+    Example Output:
+        {(0, 3, False): {'adj': [(0, 2, False),
+                                 (3, 0, False)],
+                         'state': 'u',
+                         'par': None,
+                         'dis': None},
+         (0, 2, False): {'adj': [(1, 3, True),
+                                 (2, 2, True)],
+                         'state': 'u',
+                         'par': None,
+                         'dis': None}
+         (4, 4, False): {'adj': [],
+                         'state': 'u',
+                         'par': None,
+                         'dis': None}}
+        The false in the tuples represents whether the cell is diagonal
+        or not. This refers to what direction the jumper was jumping when
+        he lands on the square, as this affects what places are available
+        to him on his next jump. Although whether it is a red square is
+        not explicitly given, for all red squares the diagonal value for
+        all outgoing nodes is the opposite of the current node. The goal
+        node in the bottom right corner is also handled differently.
+        This structure holds a lot of data for each node including:
+            * Adjacency list - constant
+            * State ('u', 'd', 'p')
+            * Parent
+            * Distance from s
+    """
+    graph = {}
+    for row_n, row in enumerate(board):
+        for col_n, (cell, red) in enumerate(row):
+            non_diagonal = []
+            # Above
+            if row_n - cell >= 0:
+                non_diagonal.append((row_n - cell,
+                                     col_n,
+                                     False))
+            # Below
+            if row_n + cell < len(board):
+                non_diagonal.append((row_n + cell,
+                                     col_n,
+                                     False))
+            # Left
+            if col_n - cell >= 0:
+                non_diagonal.append((row_n,
+                                     col_n - cell,
+                                     False))
+            # Right
+            if col_n + cell < len(row):
+                non_diagonal.append((row_n,
+                                     col_n + cell,
+                                     False))
+
+            graph[(row_n, col_n, False or red)] = {'adj': non_diagonal,
+                                                   'state': 'u',
+                                                   'par': None,
+                                                   'dis': None}
+
+            diagonal = []
+            # Up & Left
+            if row_n - cell >= 0 and col_n - cell >= 0:
+                diagonal.append((row_n - cell,
+                                 col_n - cell,
+                                 True))
+            # Up & Right
+            if row_n - cell >= 0 and col_n + cell < len(row):
+                diagonal.append((row_n - cell,
+                                 col_n + cell,
+                                 True))
+            # Down & Left
+            if row_n + cell < len(board) and col_n - cell >= 0:
+                diagonal.append((row_n + cell,
+                                 col_n - cell,
+                                 True))
+            # Down & Right
+            if row_n + cell < len(board) and col_n + cell < len(row):
+                diagonal.append((row_n + cell,
+                                 col_n + cell,
+                                 True))
+
+            graph[(row_n, col_n, not (False or red))] = {'adj': diagonal,
+                                                         'state': 'u',
+                                                         'par': None,
+                                                         'dis': None}
+
+    # Goal point handled specially
+    graph[(len(board) - 1, len(board[-1]) - 1, True)] = {'adj': [],
+                                                         'state': 'u',
+                                                         'par': None,
+                                                         'dis': None}
+    graph[(len(board) - 1, len(board[-1]) - 1, False)] = {'adj': [],
+                                                          'state': 'u',
+                                                          'par': None,
+                                                          'dis': None}
+
+    return graph
+
+
+def BFS(graph):
+    """
+    Run a breadth first search on the graph to find the shortest
+    path for the jumping man on the trampoline.
+    Input:
+        graph (dict) - representation of maze as described
+                       in build_graph()
+    Output:
+        graph (modified) -
+            * parents assigned
+            * distance assigned
+            * undiscovered points removed
+    """
+    disc_queue = deque()
+    s = (0, 0, False)
+    graph[s]['state'] = 'd'
+    graph[s]['dis'] = 0
+    disc_queue.appendleft(s)
+    while disc_queue:
+        u = disc_queue.pop()
+        u_data = graph[u]
+        for v in u_data['adj']:
+            v_data = graph[v]
+            if v_data['state'] == 'u':
+                v_data['state'] = 'd'
+                v_data['dis'] = u_data['dis'] + 1
+                v_data['par'] = u
+                disc_queue.appendleft(v)
+        u_data['state'] = 'p'
+    return {k: v for
+            k, v in
+            graph.items() if
+            v['state'] == 'p'}
+
+
+def shortest_path(board, graph):
+    """
+    Find the distance to the goal, and the
+    path taken to get there.
+    Input:
+        graph (dict) - solved graph from a BFS or DFS
+    Output:
+        On Success:
+        dict - {'dist': distance or number of jumps,
+                'path': list of points traveled}
+        On Failure:
+        None
+    Example Output:
+        {'dist': 3, 'path': [(1,1), (2,2), (2,4), (4,4)]}
+    Note:
+        So far, these functions have been dealing with all
+        coordinates and values being 0 indexed, but the
+        problem deals with 1 indexed points. Because of this
+        this function returns them 1 indexed, so points will
+        not match with what is expected from previous steps
+    """
+    goal1 = (len(board) - 1, len(board[-1]) - 1, True)
+    goal2 = (len(board) - 1, len(board[-1]) - 1, False)
+    if goal1 not in graph and goal2 not in graph:
+        return None
+    point = None
+    if goal1 in graph and goal2 in graph:
+        if graph[goal1]['dis'] < graph[goal2]['dis']:
+            point = goal1
+        else:
+            point = goal2
+    elif goal1 in graph:
+        point = goal1
+    else:
+        point = goal2
+    points = []
+    distance = graph[point]['dis']
+    while point:
+        points.append(point)
+        point = graph[point]['par']
+    assert len(points) - 1 == distance
+    return {'dist': distance,
+            'path': [(x + 1, y + 1) for
+                     x, y, _ in
+                     reversed(points)]}
+
+
+def write_output(path, filename):
+    """
+    Writes output list to file in specified format:
+        (x,y) (x,y) (x,y)...
+    Input:
+        path (list of tuples) - path found in shortest_path
+        filename (str) - filename of file to write to
+
+    Output:
+        None
+    """
+    with open(filename, 'w') as f:
+        for row, col in path:
+            f.write("({row},{col}) ".format(row=row, col=col))
+
+
+def main(infile, outfile):
+    board = read_input(infile)
+    graph = build_graph(board)
+    output = shortest_path(board, deepcopy(BFS(graph)))
+    if output is None:
+        print('No path found')
+        return
+    write_output(output['path'], outfile)
+
+
+if __name__ == '__main__':
+    main('sample_input.txt', 'sample_output.txt')
+\end{minted}
+\section{Results}
+\label{sec-3}
+(1,1) (5,1) (8,4) (4,8) (1,5) (5,1) (2,1) (2,4) (6,4) (6,8) (7,7) (1,1) (5,5) (3,7) (8,2) (8,4) (8,8) 
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}

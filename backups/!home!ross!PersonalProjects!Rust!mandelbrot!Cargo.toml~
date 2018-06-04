@@ -1,0 +1,6 @@
+[package]
+name = "mandelbrot"
+version = "0.1.0"
+authors = ["Ross Lannen <ross.lannen@gmail.com>"]
+
+[dependencies]

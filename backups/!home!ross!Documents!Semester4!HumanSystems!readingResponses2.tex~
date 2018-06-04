@@ -1,0 +1,273 @@
+% Created 2018-05-01 Tue 11:27
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{minted}
+\usepackage[margin=1in]{geometry}
+\author{Ross Lannen}
+\date{\today}
+\title{Reading Responses 2}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+\section{10 Water Laws of The West}
+\label{sec-1}
+\subsection{Quote}
+\label{sec-1-1}
+"The Third Water Law of the West, also invented by Los Angeles, is that 'if you don't have the
+water, you won't need it.' This is sometimes stated as 'he who brings the water brings the
+people'."
+\subsection{Response}
+\label{sec-1-2}
+In the long term this is very true, but in the short term flucuations of water this can be misleading.
+Whenever California is experiencing issues with drought a lot of farmers suffere greatly, so the
+idea that you don't need water you don't have does not quite apply here. However, if California were
+to have less water for a very long time, the people would adapt and farmers would either find
+another profession or switch to growing less water intensive crops like they currently do.
+\subsection{Quote}
+\label{sec-1-3}
+"The Fourth Water Law of the West, embodied in the West's surface water laws, is the doctrine
+of 'prior appropriation' translated into 'first in time is first in right'."
+\subsection{Response}
+\label{sec-1-4}
+In my personal opinion, this is really dumb. First come first serve to natural resources is a very
+unequitable system, not just in equality of wealth but in equality of opportunity. Water is a
+quite valuable resource, but some people have to waste the water they have just to state that it
+was "used" so they do not lose rights to the water. It is a huge cost to society, with little gain.
+\subsection{Citation}
+\label{sec-1-5}
+"Holub, Hugh. "10 Water Laws of the West." \textit{Northern California River Watch Web Site,}
+2010
+\section{Canadian Teen Tells UN to 'Warrior Up,' Give Water Same Protections as People}
+\label{sec-2}
+\subsection{Quote}
+\label{sec-2-1}
+"'No one should have to worry if the water is clean or if they will run out of water,' Peltier
+said in her speech. 'No child should grow up not knowing what clean water is or never know what
+running water is. We all have a right to this water as we need it --- not just rich people, all
+people.'"
+\subsection{Response}
+\label{sec-2-2}
+This reminds me of one of the slides in lecture that referenced the huge water usage of golf
+courses in the united states. Golf is typically a sport played by rich white males, who
+by extension use excessive amounts of water for a past time, while some people can't have
+running water in their house. This just highlights the issues with our current system of
+water management, and the failures of the first come first serve system.
+\subsection{Quote}
+\label{sec-2-3}
+"If you want to become a water keeper: Learn as much as you can from your elders and your teachers"
+\subsection{Response}
+\label{sec-2-4}
+I would take this piece of advice with a grain of salt. Although there is lots that we can learn
+from our elders, lots of it is not good. People in the past have been just as wasteful if not
+more wasteful with natural resources than we are, and looking to them for advice can keep us
+from looking forward for new ideas. It is our elders and people of the past that put us in
+many of the messes we are in today, so they may not be the best place to seek advice.
+\subsection{Citation}
+\label{sec-2-5}
+Kent, Melissa. "Canadian Teen Tells UN to 'Warrior up,' Give Water Same Protections as People |
+CBC News." \textit{CBCnews,} CBC/Radio Canada, 23 Mar. 2018
+\section{Environmental Changes and Violent Conflict}
+\label{sec-3}
+\subsection{Quote}
+\label{sec-3-1}
+"Homer-Dixon for instance argues that decreasing access to renewable resources increases
+frustration, which in turn creates grievances against the state, weakens the state and civil
+society and increases to opportunity for investigating an insurrection."
+\subsection{Response}
+\label{sec-3-2}
+I would modify this slightly. Although it is reasonable, just decreasing access to renewable
+resources does not account for non renewable resources that take its place. Most people do
+not have a preference for where their stuff comes from, as long as it is cheap and does
+what they need. However, if both renewable and non-renewable resources have decreased access
+then violence and conflict will likely increase.
+\subsection{Quote}
+\label{sec-3-3}
+"The evidence from quantitative large-N studies strongly suggests, however, that we should be
+very careful in drawing general conclusions from location and time-specific case study results\ldots
+Overall, the existing evidence suggests that environmental changes may, under specific
+circumstances, increase the risk of violent conflict --- but do not systematically do so."
+\subsection{Response}
+\label{sec-3-4}
+This is such a vague conclusion. This is the difficulty with trying to measure something as complex
+as violent conflict in relation to something as complex as environmental issues. Conflict in a
+region can be caused by so many issues that isolating the causes are almost impossible.
+There are also so many different types of environmental changes, that treating them all the same
+in this context is unwise. Drought, flood, and increased temperatures will all likely have different
+effects on a group of people.
+\subsection{Citation}
+\label{sec-3-5}
+"Bernauer, Thomas, et al. "Environmental Changes and Violent Conflict." \textit\{Environmental
+Research Letters,\} vol. 7, no. 1, 2012, p. 015601., \url{10.1088/1748-9326/7/1/015601}
+\section{Religion Can Make Us More Environmentally Friendly --- or Not}
+\label{sec-4}
+\subsection{Quote}
+\label{sec-4-1}
+"ARC members\ldots showed the sheikhs passages in the Koran that promote pro-environmental
+behavior, and told them that dynamite fishing goes against these teachings. The sheikhs spread
+the information to their community and, as devout Muslims, the fisherman listened."
+\subsection{Response}
+\label{sec-4-2}
+Although this seems like a huge victory, the question I have is whether this would have been
+so difficult if the people were not religious in the first place. Many things were tried
+before the religious approach to stop the fishing, and it is possible that if the fisherman
+were not as rooted in their religion they would have listened to the legal and environmental
+reasons to not fish with dynamite.
+\subsection{Quote}
+\label{sec-4-3}
+"A 2013 study in Indonesia showed that incorporating conservation messages into Islamic sermons
+increased both public awareness and levels of concern. 'Since then, Indonesia issued its first
+fatwas prohibiting illegal wildlife trafficking and poaching'"
+\subsection{Response}
+\label{sec-4-4}
+Religion is such a difficult topic to discuss, as almost all religions are dependent upon
+interpretation of the religion. As this shows, a different interpretation of a religious text
+was able to change political laws and affect an entire country in a real way. From what I have
+seen, the differences between religious people have a lot more to do with what they choose to
+interpret the religion and its ideals and less to do with what the actual religion is.
+\subsection{Citation}
+\label{sec-4-5}
+Rust, Niki. "Earth --- Religion Can Make Us More Environmentally Friendly --- or Not.
+\textit{BBC,} BBC, 7, Feb. 2017
+\section{World Scientists' Warning to Humanity: A Second Notice}
+\label{sec-5}
+\subsection{Quote}
+\label{sec-5-1}
+"Sustainability transitions come about in diverse ways, and all require civil-society pressure
+and evidence-based advocacy, political leadership, and a solid understanding of policy instruments,
+markets, and other drivers."
+\subsection{Response}
+\label{sec-5-2}
+This is one of the difficulties of creating environmental change. It requires change from so many
+areas, that a lack of change in one area will make it not viable. If the technology is there, and
+the cost of change it cheap, but political forces will keep it from being adopted the change will
+never happen. One example of this is the desalination plants in some areas of the middle east.
+Desalitation had become cheap, but the dictators of the region did not want to lose control over
+the limited water supply.
+\subsection{Quote}
+\label{sec-5-3}
+"With the exception of stabilizing the stratospheric ozone layer, humanity has failed to make
+sufficient progress in generally solving these foreseen environmental challenges, and alarmingly,
+most of them are getting far worse.
+\subsection{Response}
+\label{sec-5-4}
+The ozone stabilization is one of the greatest achievements of the past few decades. It is an
+example of how to create lasting environmental change in the world. Although each issue has
+its own intricacies and specifics, there are lessons to be learned. One of the advantages it
+had was that it never went political in a way like water or climate change has. When climate
+change went political by Al Gore, it hurt the possibility of change within congress or otherwise.
+\subsection{Citation}
+\label{sec-5-5}
+Ripple, William J., et al. "World Scientists' Warning to Humanity: A Second Notice."
+\textit{BioScience,} vol. 67, no. 12, 2017, pp. 1026-1028., \url{10.1093/biosci/bix125}.
+\section{The Water-Food-Energy Nexus --- Realising a New Paradigm}
+\label{sec-6}
+\subsection{Quote}
+\label{sec-6-1}
+"The Climate Risk Index ranks countries based on annually occuring human and economic losses
+due to climate events (floods, draughts, other extreme events). The index is used as an indicator
+that better reflects the current status of the climate change dimension"
+\subsection{Response}
+\label{sec-6-2}
+Splitting climate change issues into countries is a very strange way to view climate change. Many
+environmental issues have large scale regional or even global causes and effects that encompass
+many countries. The only environmental aspect that could be related to a country instead of
+another geographic region is related to policy. Environmental effects in a country can vary
+from its neighbors due to how a government chooses to handle a situation.
+\subsection{Quote}
+\label{sec-6-3}
+"The improved understanding of sectoral linkages and Nexus-wide dynamics reveals a set of elements
+that are important in 'transmitting' ripple effects throughout the Nexus system. The Mekong
+investigations revealed that what is typically conceptualised as a simple arrow is more accurately
+described as a series of interlinked variables."
+\subsection{Response}
+\label{sec-6-4}
+Like many things in this world, interconnections between different ideas are stronger than might
+first be believed. Although this can complicate the isolated study of these elements, it can
+increase understanding of why things happen when and how they do.
+\subsection{Citation}
+\label{sec-6-5}
+Smajgl, Alex, et al. "The Water-Food-Energy Nexus --- Realising a New Paradigm." \textit\{Journal
+of Hydrology,\} vol. 533, 2016, pp. 533-540., \url{10.1016/j/jhydrol.2015.12.033}.
+\section{Conserving a Used Planet: Embracing Our History as Transformers of Earth}
+\label{sec-7}
+\subsection{Quote}
+\label{sec-7-1}
+"By as early as 5,000 years ago, for instance, ecosystems across more than 20\% of Europe
+and Asia had already been transformed --- i.e., had their biodiversity and ecosystem processes
+significantly altered --- by intensive human use of land."
+\subsection{Response}
+\label{sec-7-2}
+Domestication of plants and animals is one of the earliest examples of this happening. Although
+less natural GMOs are a recent development, changing of DNA through breeding has been practiced
+for thousands of years. This allowed the intensive use of the earth's land that is being talked
+about.
+\subsection{Quote}
+\label{sec-7-3}
+"The idea that advanced technologies are inherently harmful must be replaced by the reality that
+these technologies have always been the means by which our species has survived and prospered.
+This is not to say that all technologies are good or that technological dependence is without
+issue. A host of problems emerges from almost every technology we use."
+\subsection{Response}
+\label{sec-7-4}
+Advanced technologies are only harmful if they are not developed and used responsibly. Technology
+by itself is not good or bad, it just is. It is the use of technology that can be helpful or
+harmful to society. Oil drilling equipment can be used for something bad, but many of the
+technologies that are used to create drilling equipment can likely be also used to manufacture
+nuclear power equipment or solar power equipment, which can be used for good.
+\subsection{Citation}
+\label{sec-7-5}
+Ellis, Erle. \textit{Conserving a Used Planet: Embracing Our History as \ldots} SNAP, 24 Sept. 2013.
+\section{The Rousseauean Moment}
+\label{sec-8}
+\subsection{Quote}
+\label{sec-8-1}
+"By its very nature, parasitism is exploitave --- a one-way, one-sided process that tends
+to leave the host debilitated, if not dead. Yet it is precisely this exploitation of the
+rural and natural periphery that permits those who inhabit the urban core to live high on
+the ecological hog."
+\subsection{Response}
+\label{sec-8-2}
+This is a very one sided way to view the relation between rural and urban areas. Yes urban
+areas do depend upon the surrounding rural areas, but rural areas also depend on cities to
+consume the goods that they produce. Farmers need people to buy their crops, and if a large
+city is nearby then they can be quite profitable due to proximity.
+\subsection{Quote}
+\label{sec-8-3}
+"Thus although technology will be an indispensable part of the solution, it must be an enhanced,
+ecological technology that makes it possible for humanity to live once again by usufruct instead
+of exploitation."
+\subsection{Response}
+\label{sec-8-4}
+Technology alone cannot solve environmental issues, but paired with political and societal change
+technology can be a powerful tool in solving environmental issues that have been created by
+people. Although there exists many alternatives to fossil fuels, there are political and economic
+issues that prevent them from becoming widespread in todays world.
+\subsection{Citation}
+\label{sec-8-5}
+Ophuls, William. "The Rousseauean Moment." \textit{The Good Society,} Penn State University Press,
+1 Aug. 2003
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}

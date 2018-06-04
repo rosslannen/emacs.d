@@ -1,0 +1,36 @@
+n = 15  # number of days until closing
+L = 6  # capacity of tank
+P = 17  # fixed delivery price
+c = 4  # price per gallon per night
+g = [4, 3, 1, 4, 2, 2, 4, 3, 1, 6, 6, 1, 5, 5, 5]
+
+
+def recur_gas(days_remaining, gallons_remaining):
+    # base case
+    if days_remaining == -1:
+        return 0
+    # recursive case
+    gallons_needed = g[len(g) - 1 - days_remaining]
+    excess = gallons_needed - gallons_remaining
+    lower_bound = excess if excess > 0 else 0
+    upper_bound = gallons_needed + L - gallons_remaining
+    min_cost = -1
+    for gallons_purchased in range(lower_bound, upper_bound + 1):
+        if gallons_purchased != 0:
+            current_cost = P + (gallons_remaining +
+                                gallons_purchased -
+                                gallons_used) * c
+        else:
+            current_cost = (gallons_remaining - gallons_used) * c
+
+        total_cost = current_cost + recur_gas(days_remaining - 1, (gallons_remaining +
+                                                                   gallons_purchased -
+                                                                   gallons_used))
+        if min_cost == -1 or total_cost < min_cost:
+            min_cost = total_cost
+    return min_cost
+
+
+if __name__ == '__main__':
+    cost = recur_gas(3, 0)
+    print('The cost is', cost)

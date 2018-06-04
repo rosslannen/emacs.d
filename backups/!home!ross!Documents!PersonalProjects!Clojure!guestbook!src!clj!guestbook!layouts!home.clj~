@@ -1,0 +1,12 @@
+(ns guestbook.layouts.home
+  (:require [hiccup.page :as page]
+            [ring.util.response :refer [response content-type]]))
+
+(defn home-html
+  [{:keys [:messages :name :message :errors]}] 
+  (page/html5
+   [:head]))
+
+(defn home
+  [params]
+  (content-type (response (home-html params)) "text/plain"))

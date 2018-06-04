@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+
+\usepackage{array}
+%
+%Margin - 1 inch on all sides
+%
+\usepackage[letterpaper]{geometry}
+\usepackage{times}
+\geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
+
+%
+%Doublespacing
+%
+\usepackage{setspace}
+\doublespacing
+
+%
+%Rotating tables (e.g. sideways when too long)
+%
+\usepackage{rotating}
+
+
+%
+%Fancy-header package to modify header/page numbering (insert last name)
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{} 
+\chead{} 
+\rhead{Lannen \thepage} 
+\lfoot{} 
+\cfoot{} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+%To make sure we actually have header 0.5in away from top edge
+%12pt is one-sixth of an inch. Subtract this from 0.5in to get headsep value
+\setlength\headsep{0.333in}
+
+%
+%Works cited environment
+%(to start, use \begin{workscited...}, each entry preceded by \bibent)
+% - from Ryan Alcock's MLA style file
+%
+\newcommand{\bibent}{\noindent \hangindent 40pt}
+\newenvironment{workscited}{\newpage \begin{center} Works Cited \end{center}}{\newpage }
+
+
+%
+%Begin document
+%
+\begin{document}
+\begin{flushleft}
+
+%%%%First page name, class, etc
+Ross Lannen\\
+Amery\\
+Human Systems\\
+May 3, 2018\\
+
+
+%%%%Title
+\begin{center}
+  Climate Change, a Threat to National Security
+\end{center}
+
+
+%%%%Changes paragraph indentation to 0.5in
+\setlength{\parindent}{0.5in}
+%%%%Begin body of paper here
+
+\begin{center}
+  Introduction
+\end{center}
+
+This Paper focuses on the following question: what are the effects of climate change as they relate to national security issues, and do these effects qualify climate change as a threat to national security in the United States? The first section will focus on defining national security, as it is both a commonly used and vague term with many interpretations. The second section will examine how national security is impacted by domestic natural disasters arising from climate change. The third section will look at how climate change can lead to an increase in militaristic threats towards the United States. The fourth section will examine how climate change will stretch and disperse the current capacity of the United States Military forces, leaving it more vulnerable to outside dangers.
+
+\begin{center}
+  Defining National Security
+\end{center}
+
+Before discussing national security and climate change further, it is of upmost importance to first define the term national security. The phrase is used a lot in today's political climate, and can be seen thrown around in any presidential address, political debate, or on just about any national news broadcast. However, national security is a vague term with little in terms of a formal definition. There does exist a general idea about what national security is, as described by Joseph Romm: ``If there exists a serious threat to the well being of most Americans, these are threats to our nation's national security by anyone's definition'' (Romm). This has lead many to relate national security to threats of a military nature, and to acts such as terrorism and war. However, national security is much more than this. Romm continues to provide a more formal definition. ``A threat to national security is whatever threatens to significantly (1) degrade the quality of life of the people, or (2) narrow the range of policy choices available to their government'' (Romm). In simpler terms, anything that poses a large threat to the American way of life can be viewed as a national security thread. This encompasses much more than just armed aggression against one's country, and as will be shown can apply to environmental issues and climate change issues.
+
+\begin{center}
+  Domestic Natural Disasters
+\end{center}
+
+There are many types of natural disasters that could pose a large issue to national security. These include --- but are not limited to --- hurricanes, tropical storms, droughts, floods, and tornadoes. In a report from the Council on Foreign Relations (CFR), Coastal areas are highlighted as a target for many of these issues: ``Coastal populations in North America will be increasingly vulnerable to climate change --- and nearly 50 percent of Americans live within fifty miles of the coast'' (Busby). Hurricane Katrina is a prime example of the destruction that a hurricane can cause to a heavily populated coastal American city. The carnage left from Katrina easily classifies it as a case where the national security of many U.S. citizens was threatened by a natural disaster. But this is not just confined to the Gulf area, but to all coastal regions of the United States. ``A NASA simulation that combined a modest forty-centimeter sea-level rise by 2050 with storm surges from a Category Three Hurricane found that, without new adaptive measures, large parts of New York City would be inundated, including much of southern Brooklyn and Queens and portions of lower Manhattan'' (Busby). To put this in perspective for how likely this is, New York City suffered three category three hurricanes in a span of less than 30 years that started in 1938. Although they are nowhere near a yearly occurrence, hurricanes of this size do happen, and coupled with rising global water levels the effects on large and less wealthy populations in an area like southern New York City could become a crisis situation.
+
+As dangerous as many of these events are, due to aspects of global climate change such as rising temperatures and rising ocean water levels, these storms are expected to become more dangerous and deadly. The table below is from a 2007 report on climate change by the International Panel on Climate change, showing the likelihood of certain events happening within our not too distant future.
+
+\begin{center}
+  \begin{tabular}{ || p{20em} | p{20em} || }
+    \hline
+    Phenomenon and direction of trend & Likelihood of future trends based on projections for 21 century using SRES scenarios\\ [0.5ex]
+    \hline\hline
+    Over most land areas, warmer and fewer cold days and nights, warmer and more frequent hot days and nights & Virtually certain\\
+    \hline
+    Warm spells/heat waves. Frequency increases over most land areas & Very Likely\\
+    \hline
+    Heavy precipitation events. Frequency increases over most areas & Very Likely\\
+    \hline
+    Area affected by drought increases & Likely\\
+    \hline
+    Intense tropical cyclone activity increases & Likely\\
+    \hline
+    Increased incidence of extreme high sea level (excludes tsunamis) & Likely\\ [1ex]
+    \hline
+  \end{tabular}
+\end{center}
+
+These predictions indicate one thing, and quite clearly: things will get worse if climate change continues at the pace it currently is. All of the dangers posed by natural disasters are threats to the security of America, and climate change will serve to increase the rate and potency with which they occur. ``Like armed attacks, some of the effects of climate change could swiftly kill or endanger large numbers of people and cause such large-scale disruption that local public health, law enforcement, and emergency response units would not be able to contain the threat'' (Busby). This solidly classifies climate change as a national security threat, and a threat to the American way of life.
+
+\begin{center}
+  Foreign Militaristic Threats
+\end{center}
+
+Although our definition of national security extends beyond military aggression from foreign powers, climate change heavily effects national security as it applies to terrorism and United States international involvement. One of the means by which this happens is through rising temperatures. In a large study undertaken by a group of researchers and economists in 2013, they found ``even relatively minor departures from normal temperatures or rainfall amounts substantially increased the risk of conflict on a variety of levels, ranging from individual aggression, such as murder and rape, to country-level political instability and international wars\ldots Across the data, the researchers found similar patterns of human aggression fueled by climate factors'' (Than). As global temperatures increase from climate change, violence will follow. Although this study was conducted with a global scope, the dangers to the United States are very real. Many terrorist organizations and groups have arisen from conflict and stability in their geographic region. As conflict rises, so will malicious groups with it.
+
+Other natural disasters will have a similar effect to the rising temperatures. In a report comparing environmental changes to change in conflict, Bernauer states ``Natural disasters significantly increase the risk of civil conflict, especially in countries with a lower gross domestic product, sluggish economic growth, mixed political regimes and preexisting conflicts'' (Bernauer). Specific examples of this include the recent violence and turmoil in Syria, where climate change can be attributed to one of the factors. ``We are now able to point to Syria, for example, where arguably many of the problems that have led to this terrible conflict and enormous loss of life began with a five-year drought of historic proportions\ldots While these factors alone did not cause the tensions that are being played out in the conflict in Syria, they surely contributed'' (Gunn). Many people in the US feared that Syrian refugees could become a national security threat, and the root cause of this can at least partially be traced to environmental and climate change. Although it has not yet happened, it is very possible for other places around the world to experience similar problems and pose a threat to the United States. Busby says one of these places is Indonesia: ``Indonesia has the world's largest Muslim population --- about 88 percent of its 245.5 million people. Some have been radicalized, but most have not\ldots Climate change, through drought conditions or storms, might further destabilize Indonesia, and if the government provided a weak response to a future weather disaster, the could encourage separatists of radicals to challenge the state or launch attacks on Western interests'' (Busby). Climate change creates what Gunn calls ``fertile recruiting grounds'' for terrorist organizations. Gunn witnessed something of this effect in Somalia when he was on duty there: ``When young people, primarily men, have no future, no prospects, no hope, and are offered an alternative to living in the refugee camps and looking at that kind of bleak future, terrorist alternatives are seductive'' (Gunn). Large natural disasters and displacement of people in unstable and developing regions of the world can lead to larger and more numerous terrorist groups, posing a direct military threat to the United States. As climate change increases, these natural disasters will as well --- clearly painting climate change as a threat to US security. Luckily, this is recognized by some in the government. ``The U.S. Secretary of Defense addressed the significance of climate change as a driver of global instability'' (Phillips). This is a step in the right direction, as the more people who are in positions of power recognize the issue the more can be done to prevent climate change and its effects.
+
+\begin{center}
+  Stretching the Limits of the Military
+\end{center}
+
+Climate change can also pose a threat to national security with respect to terrorists in other, possibly less obvious ways. The military in the United States does much more than just fight wars in foreign lands. They also play a large role in providing humanitarian aid and disaster relief both domestic and abroad. As discussed previously, natural disasters and displaced in need populations will increase as climate change progresses. ``Whether the effects of climate change are felt in extreme droughts or floods, sea level rise, increasingly violent storms, the results will often include turmoil. In the face of this turmoil, America's military will often be, as it often has been, called upon to render aid or establish or maintain stability'' (Gunn). As more forces are dispatched to deal with these issues, less troops will be available to deal with attacks upon the United States by terrorist groups around the globe. Gunn states the troops might possibly even be under trained, as training days are lost to fighting wildfires and floods.
+
+In more extreme cases, natural disasters could directly impact military operations. Many military bases are located in disaster prone areas: ``Climate change could, through extreme weather events, have a more direct impact on national security by severely damaging critical military bases, thereby diverting or severely undermining significant national defense resources\ldots In 1992, Hurricane Andrew did such damage to Homestead Air Force Base in Miami that it never reopened. In 2004, damage from Hurricane Ivan kept Pensacola Naval Air Station closed for almost a year'' (Busby). If storms were to permanently or temporarily limit the functions of a base, a malicious group could use this opportunity to strike out at the US, causing damage when we are least prepared. 
+
+\begin{center}
+  Conclusion
+\end{center}
+
+Climate change in its own right is a serious problem facing the world. Almost all people are aware of the well known issues of climate change: rising temperatures, melting ice caps, and more extreme weather patterns. But the extent and consequences of climate change are more far reaching than many people know or can imagine. National security of the United States is one of these areas that climate change reaches to, and will continue to change and evolve alongside the climate. In the current political climate, climate issues are often pushed to the back table to prioritize the war against terror and protection of the American people from outside threats. And although these are noble pursuits, climate change can only serve to multiply these issues. If national security is to be taken seriously, climate change has to change or the current way of life for the American people will be endangered and lost.
+
+\newpage
+
+%%%%Works cited
+\begin{workscited}
+
+  \bibent
+  Bernauer, Thomas, et al. ``Environmental Changes and Violent Conflict.'' \textit{Environmental Research Letters,} vol. 7, no. 1, 2012, p. 015601., doi:10.1088/1748--9326/7/1/015601
+
+  \bibent
+  Busby, Joshua W. ``Climate Change and National Security An Agenda for Action.'' \textit{Council on Foreign Relations}, Council on Foreign Relations Press, Nov. 2007
+
+  \bibent
+  Gunn, Lee. ``National Security and the Accelerating Risk of Climate Change.'' \textit{Elem Sci Anth}, vol. 5, 2017, p. 30., doi:10.1525/elementa.277.
+
+  \bibent
+  IPCC, 2007: \textit{Climate Change 2007: Synthesis Report. Contribution of Working Groups I, II and III to the Fourth Assessment Report of the Intergovernmental Panel on Climate Change} [Core Writing Team, Pachuari, R.K and Reisinger, A. (eds.)]. IPCC, Geneva, Switzerland, 104 pp.
+
+  \bibent
+  Phillips, Ann C. ``National Security Depends on Climate Change Preparation.'' \textit{Sea Technology,} vol. 58, no. 11, 2017, pp. 7. ProQuest, http://mines.idm.oclc.org/login?url=https://search.proquest.com/docview/1983634024?accountid=25386. 
+
+  \bibent
+  Romm, Joseph J. \textit{Defining National Security: the Nonmilitary Aspects.} Council on Foreign Relations Press, 1993.
+
+  \bibent
+  Than, Ker. ``Wars, Murders to Rise Due to Global Warming?'' \textit{National Geographic}, National Geographic, 1 Aug. 2013
+
+  \bibent
+  ``Weather 2000'' \textit{Weather 2000}, Weather 2000, 9 Apr. 2013, www.weather2000.com/NY\_Hurricanes.html.
+\end{workscited}
+
+\end{flushleft}
+\end{document}
+\}

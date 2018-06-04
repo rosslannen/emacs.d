@@ -1,0 +1,38 @@
+using Microsoft.AspNetCore.Razor.TagHelpers;
+
+namespace Transport.Pages.TagHelpers
+{
+    [HtmlTargetElement("input", Attributes = "[type=text],model")]
+        public class TextInputTagHelper : TagHelper
+        {
+            public string Model { get; set; }
+            public string Attribute { get; set; }
+            public string Label { get; set; }
+            public string Placeholder { get; set; }
+            public string generateContent()
+            {
+                return
+                    $@"
+<div class=""field-label"">
+    <label class=""label"" for=""{Model}_{Attribute}"">{Label}</label>
+</div>
+<div class=""field-body"">
+    <div class=""field"">
+        <div class=""control"">
+            <input class=""input""
+                   placeholder=""{Placeholder}""
+                   asp-for=""{Model}.{Attribute}""/>
+        </div>
+        <span asp-validation-for=""{Model}.{Attribute}""></span>
+    </div>
+</div>
+";
+            }
+            public override void Process(TagHelperContext context, TagHelperOutput output)
+            {
+                output.TagName = "div";
+                output.Attributes.SetAttribute("class", "field is-horizontal");
+                output.Content.SetContent(generateContent());
+            }
+        }
+}

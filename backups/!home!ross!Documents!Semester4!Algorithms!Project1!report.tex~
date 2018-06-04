@@ -1,0 +1,236 @@
+% Created 2018-01-29 Mon 23:42
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage[margin=1in]{geometry}
+\author{Ross Lannen}
+\date{\today}
+\title{Traveling Sales Person}
+\hypersetup{
+ pdfauthor={Ross Lannen},
+ pdftitle={Traveling Sales Person},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.2.2 (Org mode 9.0.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section{Implimentation}
+\label{sec:org9411e95}
+\subsection{Nearest Neighbor}
+\label{sec:orga12571d}
+\begin{minted}[,fontsize=\footnotesize]{python}
+def solveNearestNeighbor(points):
+    """
+    Solve for path using the nearest neighbor
+    inputs:
+        points - list of points that are to be treversed
+    output:
+        result in the form {"path": path,
+                            "distance": distance,
+                            "time": time,
+                            "n": numPoints}
+    """
+    n = len(points)               # Number of points
+    path = []                     # List holding the final solved path of points
+
+    # Start timer
+    startTime = clock()
+    startPoint = points[0]        # Store first point, designated as first point in list O(n)
+    points.remove(startPoint)     # O(n), removal at beginning not very efficient
+    path.append(startPoint)       # O(1)
+    currentPoint = startPoint     # Stores current list being evaluated
+    while(points):                # runs n times O(n)
+        # Calculate distances from current point to other remaining points
+        distances = {point: findDistance(currentPoint, point)
+                        for point in points} # n - i comparisons O(n)
+        # Starts at maximum, works down from there
+        leastDistance = max(distances.values()) # O(n) maximum
+        nextPoint = ()                          # Holder for next point to solve for
+        # Find point with the least distance away
+        for point, distance in distances.items(): # O(n)
+            # all O(1)
+            if distance <= leastDistance:
+                leastDistance = distance
+                nextPoint = point
+        # Move point from possible points to end of path, update current point
+        points.remove(nextPoint)             # O(n) maximum
+        path.append(nextPoint)               # O(1)
+        currentPoint = nextPoint             # O(1)
+
+    path.append(startPoint)                  # Put the starting point back and the end O(1)
+    # Stop clock
+    endTime = clock()
+
+    # Path is solved for, now just iterate to find total distance
+    pathDistance = findPathDistance(path)
+    return {"path": path,
+            "distance": pathDistance,
+            "time": (endTime - startTime),
+            "n": n}
+\end{minted}
+\subsection{Exhaustive}
+\label{sec:org87fcf13}
+\begin{minted}[,fontsize=\footnotesize]{python}
+def solveExhaustive(points):
+    """
+    Solve for path using an exhaustive method
+    inputs:
+        points - list of points that are to be treversed
+    output:
+        results in the form {"path": path,
+                            "distance": distance,
+                            "time": time,
+                            "n": numPoints}
+    """
+    n = len(points)            # Number of points
+    path = []                  # List storing final solved path
+    # Ensure all paths start at same place, and reduce number of perms
+    startPoint = points[0]
+    points.remove(startPoint)
+    # Use python library to find all permutations of the points
+    permutations = [list(perm)
+                    for perm
+                    in itertools.permutations(points)]
+    # For each permutation, add the first element at the beginning
+    # and end to make complete path
+    for perm in permutations:
+        perm.insert(0, startPoint)
+        perm.append(startPoint)
+
+    # Start timer
+    startTime = clock()
+    path = permutations[0]                           # Holds final path
+    pathDistance = findPathDistance(permutations[0]) # Holds final path distance
+    for path in permutations:                        # O(n!)
+        distance = findPathDistance(path)            # O(n)
+        # all O(1)
+        if distance < pathDistance:
+            pathDistance = distance
+            path = path
+    # Stop timer
+    endTime = clock()
+
+    return {"path": path,
+            "distance": pathDistance,
+            "time": (endTime - startTime),
+            "n": n}
+\end{minted}
+\section{Worst-Case Time Complexities}
+\label{sec:orgb29f3c3}
+\subsection{Nearest Neighbor}
+\label{sec:org9c6e975}
+Source with some O(1) operations removed outside of loop:
+
+\begin{minted}[,fontsize=\footnotesize]{python}
+# runs n times
+while(points):
+    # n - i comparisons O(n)
+    distances = {point: findDistance(currentPoint, point)
+                    for point in points}
+    # O(n) for max search
+    leastDistance = max(distances.values())
+    nextPoint = ()
+    # runs n times
+    for point, distance in distances.items():
+        # all constant time
+        if distance <= leastDistance:
+            leastDistance = distance
+            nextPoint = point
+    # constant time
+    points.remove(nextPoint)             
+    path.append(nextPoint)
+    currentPoint = nextPoint
+\end{minted}
+
+\(n * (n + n + n)\)
+
+\(O(n^2)\) time complexity
+\subsection{Exhaustive}
+\label{sec:org9a0b791}
+Source with some O(1) operations removed outside of loop:
+
+\begin{minted}[,fontsize=\footnotesize]{python}
+# (n - 1)! permutations of points
+for path in permutations:
+    # distance takes O(n)
+    distance = findPathDistance(path)
+    # all O(1)
+    if distance < pathDistance:
+        pathDistance = distance
+        path = path
+\end{minted}
+
+\((n - 1)! * n\)
+
+\(n!\)
+
+\(O(n!)\) time complexity
+\section{Runtimes}
+\label{sec:orgf1cba51}
+\subsection{Nearest Neighbor}
+\label{sec:org01dcaa8}
+\begin{center}
+\begin{tabular}{rrrrr}
+n & trial 1 & trial 2 & trial 3 & average\\
+\hline
+500 & 0.075403 & 0.076249 & 0.079375 & 0.077009\\
+1000 & 0.300929 & 0.299951 & 0.300273 & 0.30038433\\
+2000 & 1.219206 & 1.254200 & 1.242856 & 1.238754\\
+5000 & 7.660113 & 7.716350 & 7.788325 & 7.721596\\
+\end{tabular}
+\end{center}
+\subsection{Exhaustive}
+\label{sec:org9441526}
+\begin{center}
+\begin{tabular}{rrrrr}
+n & trial 1 & trial 2 & trial 3 & average\\
+\hline
+8 & 0.026891 & 0.024994 & 0.026200 & 0.026028333\\
+9 & 0.225606 & 0.224060 & 0.223920 & 0.22452867\\
+10 & 2.240395 & 2.229363 & 2.253650 & 2.241136\\
+11 & 24.272009 & 24.062312 & 24.597880 & 24.310734\\
+\end{tabular}
+\end{center}
+\section{Theoretical vs. Actual performaces}
+\label{sec:orgab192eb}
+\subsection{Nearest Neighbor}
+\label{sec:orgc1bfb13}
+\begin{center}
+\begin{tabular}{rrrr}
+n & n\(^{\text{2}}\) & runtime & n\(^{\text{2}}\)/runtime\\
+\hline
+500 & 250000 & 0.077009 & 3246373.8\\
+1000 & 1000000 & 0.300384 & 3329072.1\\
+2000 & 4000000 & 1.238754 & 3229051.1\\
+5000 & 25000000 & 7.721596 & 3237672.6\\
+\end{tabular}
+\end{center}
+\subsection{Exhaustive}
+\label{sec:orgcebc039}
+\begin{center}
+\begin{tabular}{rrrr}
+n & n! & runtime & n!/runtime\\
+\hline
+8 & 40320 & 0.026028 & 1549101.0\\
+9 & 362880 & 0.224528 & 1616190.4\\
+10 & 3628800 & 2.241136 & 1619178.8\\
+11 & 39916800 & 24.310734 & 1641941.4\\
+\end{tabular}
+\end{center}
+\end{document}

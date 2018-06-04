@@ -1,0 +1,272 @@
+\documentclass[12pt]{article}
+
+%
+%Margin - 1 inch on all sides
+%
+\usepackage[letterpaper]{geometry}
+\usepackage{times}
+\geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
+
+%
+%Doublespacing
+%
+\usepackage{setspace}
+\doublespacing
+
+%
+%Rotating tables (e.g. sideways when too long)
+%
+\usepackage{rotating}
+
+
+%
+%Fancy-header package to modify header/page numbering (insert last name)
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{} 
+\chead{} 
+\rhead{Lannen \thepage} 
+\lfoot{} 
+\cfoot{} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+%To make sure we actually have header 0.5in away from top edge
+%12pt is one-sixth of an inch. Subtract this from 0.5in to get headsep value
+\setlength\headsep{0.333in}
+
+%
+%Works cited environment
+%(to start, use \begin{workscited...}, each entry preceded by \bibent)
+% - from Ryan Alcock's MLA style file
+%
+\newcommand{\bibent}{\noindent \hangindent 40pt}
+\newenvironment{workscited}{\newpage \begin{center} Works Cited \end{center}}{\newpage }
+
+
+%
+%Begin document
+%
+\begin{document}
+\begin{flushleft}
+
+%%%%First page name, class, etc
+Ross Lannen\\
+Mancus\\
+Environmental Film\\
+April 27, 2018\\
+
+
+%%%%Title
+\begin{center}
+  \textit{Moana} --- The Plea For Environmental Action
+\end{center}
+
+
+%%%%Changes paragraph indentation to 0.5in
+\setlength{\parindent}{0.5in}
+%%%%Begin body of paper here
+
+\textit{Moana} is an animated film created by Disney in 2016, and directed by Ron Clements and
+John Musker (IMDb) In the movie, a young girl named Moana from a Pacific Island tribe must journey across
+the ocean to help the demigod Maui restore the heart of the goddess Te Fiti that he stole long
+ago to save her island and people from impending doom and death. As an infant she is chosen by
+the sea for this task, but it isn't until she is older that she defies the wishes of her father,
+sneaks out in a boat, and sails off to find Maui and make him restore the heart.
+
+\textit{Moana} is an animated film released by Disney in 2016, and directed by Ron Clements and
+John Musker. The movie begins with a tale of how long ago the demigod Maui stole the heart of
+the goddess Te Fiti as a gift to mankind. But this theft was a mistake, as it angered Te Fiti and
+awoke many other foul monsters who sought out the heart. The world then became a dangerous place,
+and life was slowly being drained from island and island throughout the sea. On one of these
+islands, a young girl named Moana, after helping a baby turtle escape to the ocean, is chosen
+by the ocean to journey across it to find Maui, and help him restore the heart and save her
+people. One night after some help from her Mother and Grandmother, Moana goes against the
+wishes of her father and sets sail. She soon finds Maui and helps him get back his hook from
+Tamatoa, the giant crab who stole it. With hook in hand Maui and Moana head for Te Fiti to
+restore the heart. A giant monster who guards the island attacks them and almost defeats
+the duo, but Moana manages to make it to the island. But when Moana arrives, she realizes that
+the angry monster guarding the island of Te Fiti is actually Te Fiti herself angry at the loss
+of her heart. Moana graciously gives the heart back to Te Fiti, restoring her to former glory.
+The day is saved, and Moana returns to her home a hero and her people become seafaring once
+again.
+
+Moana is clearly the protagonist of the film, and is established as such quite early in the
+film. The infant Moana is shown playing around by the ocean, looking for shells on the beach.
+But, she is distracted by the noises of some birds shown in the background of the shot off by
+the edge of the jungle. The calls of the birds seem to break the monotonous crashing of the
+waves in a jarring manor. This is followed by an over the shoulder shot of the birds now in
+focus, as the young Moana gazes in their direction. This quickly cuts to a close up shot of
+a baby turtle hiding beneath a log, clearly at the center of attention of the birds. The
+turtle is looking towards the sky timidly with a look on its face easily described as puppy
+dog eyes. The next shot shows just a grove of bushes, when a hand juts up through the bottom
+of the frame. The shot is cropped well above the head of Moana, showcasing just how short and
+young she is. The hand barely grasps one of the large fronds and and pulls it out. The scene
+cuts to a shot of the camera looking directly downward at the beach sand at a set of 2 prints:
+the human footprints of Moana and the flipper prints of the baby turtle. The camera pans upward,
+following the pair of prints to almost the edge of the ocean where Moana is seen holding the
+large green leaf over the turtle, protecting it from the preying birds. Some time has elapsed
+before this cut, as they are moving slowly but are first shown with quite a lot of progress.
+A very low angle shot closer to the action follows, with a black angry looking bird approaching
+Moana and the sheltered turtle. It snaps at the turtle, and Moana kicks at the bird shouting
+``Shoo! Shoo!'', while another bird sneaks up from behind and snaps at the turtle. The second
+bird almost succeeds before Moana chases it away, but not before the turtle is flipped onto
+its back. The low angle of the camera makes Moana seem all powerful and in control, even
+though she cannot be more than a few years old. Another close up shot of the turtle shows the
+seemingly towering baby Moana flip the turtle onto its front, where it then swims away into
+the ocean.
+
+Just as the viewer is expecting the scene to end, a wide angle shot from out on the ocean
+looking towards Moana on the beach appears, and shows a magic wave rushing towards the shore
+with a sparkling sound almost like thousands of tiny bells ringing and a light whistling
+in the air. A high angle shot shows the wave hitting the shore, reminding the viewer how
+small Moana is from the aerial view. The ocean suddenly parts in front of Moana, exposing
+a conch shell she was chasing after earlier. As she reaches down to pick up the shell, a
+musical number starts with gentle singing. The sea continues to split revealing shells,
+as Moana follows the trail of shell breadcrumbs. Through the split in the sea a large
+turtle is seen, possibly the parent of the turtle just saved from the birds. The music
+swells as it swims by. After the turtle leaves, a faceless but clearly intelligent wave
+rises from the surface, and playfully messes with Moana's hair. This cuts to a view out into
+the ocean, as a green stone known to be the heart of Te Fiti rushes towards the rift in the
+ocean. A magical sounding ringing accompanies its movements. As it gets close, Moana reaches
+into the wall of water grabbing the stone. A close up of Moana gently feeling the patterns
+of the rock confirms any suspicions of what the rock is. The scene ends with Moana's Father
+calling out to her from the shore, and the giant sentient wave pushing her back to the beach.
+
+This scene establishes many things vital to the movie. First it pushes the idea that Moana
+even from a young age is a lover of nature and the environment. She protected the turtle from
+the evil looking birds saving its life, and allowing it to be with its family. Moana is a
+hero because of it. According to Susan Griffin, an author famous for her ideas on ecofeminism
+``During the heady days of feminism, there were some who\ldots argued that indeed women are
+closer to nature [than men], a proximity making us superior to men.'' Moana seems to follow
+this line of thought, as her closeness to nature gives her a superiority over the others on
+her island --- being chosen by the sea to have the heart of Te Fiti.
+
+Although the ``good guy'' in Moana is blatantly obvious to any viewer of the film, the antagonist
+is a bit more difficult to decipher. There are a long list of characters who could qualify for
+the position: the enraged fiery Te Fiti guarding the island, the greedy crab Tamatoa who stole
+Maui's magical fish hook, or maybe Moana's father the chief for not letting Moana leave the
+island. But the most sensible person to be the antagonist of the movie would be who created the
+mess that everyone seems to be in --- Maui himself. It was him who originally stole the heart
+causing the death of the islands, the loss of food for Moana's people, the enraging of Te Fiti,
+the loss of the fish hook, and the countless dangers that roam the sea. Maui is the reason Moana
+has to adventure from home, and put her life in danger for her people.
+
+Despite this however, it
+is a gross oversimplification to call Maui the antagonist for the entire duration of the movie, and
+even to call him evil for stealing the heart in the first place. He stole the heart to appease
+humans in the first place as a hero of the people, and aided Moana in returning it for the same
+reasons. Maui also starts out as a rather selfish character when he is introduced to Moana. He
+brags to Moana about all he has done for humans before stealing her boat and locking her in a
+cave. But as the movie progresses and he warms up to Moana, he becomes a much less selfish
+demigod, and even risks his life and magical hook to help Moana restore the heart of Te Fiti.
+Perhaps it is more accurate then to call Maui of thousands of years ago the antagonist of
+\textit{Moana}, while the Maui present in most of the movie is at least a helpful companion if
+not a protagonist himself. 
+
+In an environmental context, Maui's complex character makes much more sense as a symbol in the
+film. Maui in \textit{Moana} is not just representation of a single person or group, but as
+humanity as a whole. When Moana first meets Maui on his island, Maui launches into a song
+about all of his accomplishments for mankind. Some of these accomplishments include pulling
+islands up from the ocean, lassoing the sun, creating coconut trees, and stealing fire to name
+a few. These events described by Maui in the movie are quite accurate in terms of the mythology
+surrounding him in Polynesian culture. As described by Sharon Black in a publication about
+Polynesian Folklore: ``The function of folktales and mythology to explain why the world is
+like it is becomes easily apparent, as Maui's `amazing things' change the structure of nature
+and the routine of people's lives: providing space, increasing daylight, and otherwise improving
+nature to ease the living conditions of his people. (Black et al)''. These things --- improving
+nature, eased living conditions, increasing daylight all have real world correlations not just
+to mythical and natural phenomenon, but technical advancements as well. Skyscrapers, electricity
+and the light bulb, and air conditioning to name a few accomplish the same things that Maui is
+renowned for.
+
+The stealing of the heart of Te Fiti also fits into this view of Maui, as it is directly related
+to greed of environmental resources. Consuming non-renewable resources is seen by many in our world
+to be a heroic act, as it can improve the lives of those who consume it; just as Maui stealing
+the heart can be seen as a heroic act for the people of the Pacific. This greed however has
+consequences both in the movie and in the real world. In the movie the consequences are shown as
+fast subjective violence: ``sudden, immediate bursts of violence typically `performed by a clearly
+identifiable agent' (Dunaway)'' such as the anger of Te Fiti, the quick degradation of the island's
+food supply, and the black draining of Moana's island that resembles closely an oil spill, similar
+to the one Dunaway used fast violence to explain. But in real life, they manifest quite differently
+in the form of climate change, deforestation, severe droughts, and more extreme weather patterns.
+In the real world the consumption of these natural resources are shown as a systematic violence:
+``the often catastrophic consequences of the smooth functioning of our economic and political
+systems (Dunaway)''. Despite these differences, the similarities are striking. Maui and humans
+have both done many great things for the advancement of humans as a species, but due to excessive
+greed and overreaching of boundaries much more harm is being caused than good.
+
+Through this same lens, the implication of Moana's character also becomes clear.  Moana's character
+creates a template for how the viewer in today's society can do their part to solve climate change
+and other modern environmental issues. Moana is created as an environmentally conscious individual
+who goes against the mainstream of her society to aid Maui (mankind) in restoring the world back
+to how it was before he was consumed by greed.
+
+But along with pushing people to become this force of good, \textit{Moana} also tells of many of
+the difficulties that go along with someone embarking on such a journey. The most prominent of
+these is after attempting to make it to Te Fiti the first time, when Moana is abandoned by Maui.
+Moana and Maui have a large argument about returning to the island of Te Fiti, which ends in Maui
+flying away as an eagle. With a close shot of her face, Moana asks of the ocean: ``Why did you
+bring me here?''. The shot cuts to a wide angle shot encompassing the entire boat, Moana, and
+a very human like wave of the ocean, reaching high above Moana and seeming to look down upon her.
+The wave also has a bright blue glow, in an otherwise very low key lighting from the nighttime.
+The blue glow, although likely from the moon, betrays the intelligence of the ocean spirit. Moana's
+seemingly insignificant size highlights her vulnerability in this moment, as she feels lost and
+defeated. The scene soon ends up at a high angle from over the ``shoulder'' of the wave, with
+Moana offering up the heart to the ocean. She speaks shakily ``I'm not the right person. You have
+to choose someone else.'' The high angle again shows her vulnerability, and communicates how small
+Moana must be feeling at this moment --- lost at sea, at night, and having failed her first
+attempt to return the heart. The wave reaches down towards her hand with the glowing green rock,
+sucks it up, and returns back to the surface of the water, as the heart sinks to the bottom.
+Moana slumps to her knees in obvious despair. As she is staring back into the ocean, a bright blue
+light appears in the distance, and quickly approaches. The camera jumps to an overhead view of the
+boat, as the blue light is revealed as a manta ray that swims around the boat. The camera slowly
+zooms in and pans down to show the wonder on Moana's face as she realizes her Grandma has come
+to her aid. An over the shoulder shot from behind Moana in the opposite direction reveals her
+Grandma as a ghost like apparition is sitting on the other end of the boat. She runs to hug her,
+and as slow sad music plays gently in the background the spirit of her Grandma comforts Moana.
+
+After both standing up, in usual Disney fashion, song again breaks out. It begins quiet as the
+elder asks Moana who she really is and what she believes in. Just as the instrumentation begins
+to rise, Moana takes over the singing, changing into a higher key. On the horizon, more ghost-like
+boats appear on the horizon towering above Moana's small boat. The light from the apparition
+fleet brightens the mood of the scene considerably, and makes both the viewer and Moana seem much
+less lonely and afraid of the future. At the climax of the song she looks up confidently into
+the night sky, sings loudly ``I am Moana!'', and dives into the ocean to find the heart of Te
+Fiti. Near the bottom of the sea, a wide angle shot shows Moana swimming into the bright green
+glow let off by the stone, followed by a close up of her grabbing the stone out of the sand.
+She quickly surfaces, shoving the stone into the air triumphantly before realizing her Grandma
+and the fleet of boats is no longer there. This leaves the viewer in disbelief if those things
+actually happened, or were just in her head.
+
+In the larger context of Moana being a template for environmental change, this scene serves to
+show that often times when trying to change the world, doubt and a lack of confidence will likely
+appear, and that the faith of others will sometimes not be with you. But as Moana does go on to
+restore the heart, it shows that these setbacks are only temporary and will come to pass.
+\textit{Moana} provides a template for how to save the world they live in, and follow in Moana's
+footsteps. And even though saving the world is by no means easy, it is possible with help from
+the right people and lots of courage.
+
+\newpage
+
+%%%%Works cited
+\begin{workscited}
+
+  \bibent
+  Black, S., Wright, T. & Erickson, L. \textit{Children's Literature in Education (2001) 32: 125} Kluwer Academic Publishers --- Plenum Publishers, 2001.
+
+  \bibent
+  Dunaway, Finis. \textit{Seeing Green: The Use and Abuse of American Environmental Images.} Univ of Chicago Press, 2018.
+
+  \bibent
+  Griffin, Susan. \textit{Woman and Nature: the Roaring Inside Her.} Counterpoint, 2016
+
+  \bibent
+  ``Moana (2016).'' \textit{IMDb}, IMDb.com, www.imdb.com/title/tt3521164/.
+
+\end{workscited}
+
+\end{flushleft}
+\end{document}
+\}

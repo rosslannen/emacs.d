@@ -1,0 +1,355 @@
+;;; .emacs --- Global Settings
+
+;;; Commentary:
+
+;;; Code:
+
+
+;; User info
+(setq user-full-name "Ross Lannen")
+(setq user-mail-address "ross.lannen@gmail.com")
+
+(package-initialize)
+
+;; init-use-package.el
+;; Update package-archive lists
+(require 'package)
+(setq package-enable-at-startup nil)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+
+
+
+;; Install 'use-package' if necessary
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Enable use package
+(eval-when-compile
+ (require 'use-package))
+
+(setq use-package-always-ensure t)
+;; init-use-package.el ends here
+
+;; Set encoding to UTF-8
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+
+;; Delete trailing whitespaces upon exiting
+;(add-hook 'before-save-hook
+;	  'delete-trailing-whitespace)
+
+;; sets better defaults
+(use-package better-defaults)
+
+;; Evil mode
+(use-package evil
+  :config
+  (progn
+    (evil-mode 1))
+  (define-key evil-normal-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+  (define-key evil-normal-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line)
+  (define-key evil-motion-state-map (kbd "<remap> <evil-next-line>") 'evil-next-visual-line)
+  (define-key evil-motion-state-map (kbd "<remap> <evil-previous-line>") 'evil-previous-visual-line))
+                                        ;(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+                                        ;(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+                                        ;(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+                                        ;(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+                                        ;(define-key evil-normal-state-map (kbd "C-j") 'evil-window-next)
+                                        ;(define-key evil-motion-state-map (kbd "C-j") 'evil-window-down)
+                                        ;(define-key evil-motion-state-map (kbd "C-k") 'evil-window-up)
+                                        ;(define-key evil-motion-state-map (kbd "C-h") 'evil-window-left)
+                                        ;(define-key evil-motion-state-map (kbd "C-l") 'evil-window-right)
+                                        ;(define-key evil-motion-state-map (kbd "C-j") 'evil-window-next))
+
+;; Sets line numbers
+(global-linum-mode t)
+
+;; Org mode
+(use-package org)
+
+;; Evil org mode - org evil integration and keybindings
+; (use-package evil-org)
+
+;; Splash screen
+(setq inhibit-splash-screen t
+      initial-scratch-message nil)
+
+;; Set smooth 1 line scrolling
+;;(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+;;(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+;;(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+;;(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+;; Helm incremental narrowing search framework
+(use-package helm)
+
+;; Company auto-completion
+(use-package company
+  :config
+  (add-hook 'after-init-hook 'global-company-mode))
+
+;; Company Quickhelp
+(use-package company-quickhelp
+  :config
+  (company-quickhelp-mode 1))
+
+                                        ; This isn't working right now, so its going away
+;; YASnippet
+                                        ;(use-package yasnippet
+                                        ;  :config
+                                        ;(yas-global-mode 1))
+
+;; Magit
+(use-package magit)
+(use-package gitignore-mode)
+
+;; Elm-mode
+(use-package elm-mode
+  :config
+  (setq elm-format-on-save t)
+  (setq elm-sort-imports-on-save t)
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-elm)))
+
+;; Flycheck
+(use-package flycheck
+  :init
+  (global-flycheck-mode))
+
+;; Flycheck-Elm
+(use-package flycheck-elm
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-elm-setup)))
+
+;; Anaconda mode for Python IDE
+(use-package anaconda-mode
+  :config
+  (add-hook 'python-mode-hook 'anaconda-mode)
+  (add-hook 'python-mode-hook 'anaconda-eldoc-mode))
+(use-package py-autopep8
+  :config
+  (add-hook 'python-mode-hook 'py-autopep8-enable-on-save))
+(setq python-shell-interpreter "python3")
+(defvaralias 'flycheck-python-flake8-executable 'python-shell-interpreter)
+
+;; Anaconda backend for company
+(use-package company-anaconda
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-anaconda)))
+
+;; Multi-Term for supporting multiple terminals
+(use-package multi-term
+  :config
+  (evil-define-key 'normal term-raw-map
+    "p" 'term-paste)
+  (evil-define-key 'normal term-raw-map
+    "P" 'term-paste))
+
+;; TRAMP settings for remote hosts
+(setq tramp-default-method "ssh")
+
+;; Irony stuff for c, c++
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(use-package irony
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+  (add-hook 'objc-mode-hook 'irony-mode)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
+(use-package company-irony
+  :config
+  (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+  (setq company-backends (delete 'company-semantic company-backends)))
+(use-package company-irony-c-headers
+  :config
+  (eval-after-load 'company
+    '(add-to-list
+      'company-backends '(company-irony-c-headers company-irony))))
+(use-package flycheck-irony
+  :config
+  (eval-after-load 'flycheck
+    '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+  (eval-after-load 'flycheck
+    '(add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "gnu++11"))))
+  (eval-after-load 'flycheck
+    '(add-hook 'c++-mode-hook (lambda () (setq flycheck-clang-language-standard "gnu++11")))))
+(use-package clang-format
+  :config
+  (setq clang-format-style-option "google")
+  (setq clang-format-on-save t))
+
+;; Other Mode Line Stuff
+                                        ;(use-package rich-minority)
+
+;; Mode line fun
+(use-package telephone-line
+  :config
+  (setq telephone-line-lhs
+        '((evil   . (telephone-line-evil-tag-segment))
+          (accent . (telephone-line-major-mode-segment))
+          (nil    . (telephone-line-buffer-segment
+                     telephone-line-minor-mode-segment))))
+  (setq telephone-line-rhs
+        '((nil    . (telephone-line-misc-info-segment))
+          (accent . (telephone-line-vc-segment
+                     telephone-line-process-segment))
+          (evil   . (telephone-line-airline-position-segment))))
+  (setq telephone-line-subseparator-faces '())
+  (setq telephone-line-primary-left-separator 'telephone-line-gradient
+        telephone-line-secondary-left-separator 'telephone-line-flat
+        telephone-line-primary-right-separator 'telephone-line-gradient
+        telephone-line-secondary-right-separator 'telephone-line-gradient)
+  (setq telephone-line-height 18)
+                                        ;telephone-line-evil-use-short-tag t)
+  (telephone-line-mode t))
+
+;; Dockerfile syntax highlighting
+(use-package dockerfile-mode)
+
+;; .NET stuff
+(use-package omnisharp
+  :hook (csharp-mode fsharp-mode)
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-omnishap)))
+
+;; C# mode
+(use-package csharp-mode) 
+
+;; Fsharp Mode
+(use-package fsharp-mode)
+
+;; Web Mode
+(use-package web-mode)
+
+;; Clojure Mode
+(use-package clojure-mode
+  :config
+  (define-clojure-indent
+    (defroutes 'defun)
+    (GET 2)
+    (POST 2)
+    (PUT 2)
+    (DELETE 2)
+    (HEAD 2)
+    (ANY 2)
+    (OPTIONS 2)
+    (PATCH 2)
+    (rfn 2)
+    (let-routes 1)
+    (context 2)))
+
+;; And Cider
+(use-package cider)
+
+;; Powershell Mode
+(use-package powershell)
+
+;; Markdown Mode
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+;; asm mode customizations
+(setq asm-comment-char ?\#)
+
+;; Haskell stuff
+(use-package haskell-mode)
+(use-package company-ghci
+  :config
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-ghci)))
+
+;; Latex stuff
+(require 'ox-latex)
+(setq org-latex-listings 'minted)
+(add-to-list 'org-latex-packages-alist '("" "minted"))
+(setq org-latex-pdf-process
+      '("xelatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+        "xelatex -interaction nonstopmode -shell-escape -output-directory %o %f"
+        "xelatex -interaction nonstopmode -shell-escape -output-directory %o %f"))
+
+;; Aggressive indentation
+(use-package aggressive-indent
+  :config
+  (global-aggressive-indent-mode 1))
+
+;; Elixir
+(use-package elixir-mode)
+(use-package alchemist)
+
+;; Rust
+(use-package rust-mode
+  :config
+  (setq rust-format-on-save t))
+(use-package cargo
+  :hook rust-mode) 
+(use-package racer
+  :hook ((rust-mode . racer-mode)
+         (racer-mode . eldoc-mode)))
+(use-package flycheck-rust)
+  
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(blink-cursor-mode nil)
+ '(custom-enabled-themes (quote (sanityinc-tomorrow-bright)))
+ '(custom-safe-themes
+   (quote
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "bb08c73af94ee74453c90422485b29e5643b73b05e8de029a6909af6a3fb3f58" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" "04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" default)))
+ '(erc-modules
+   (quote
+    (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands readonly ring stamp track)))
+ '(menu-bar-mode nil)
+ '(package-selected-packages
+   (quote
+    (flycheck-rust alchemist elixir-mode color-theme-sanityinc-tomorrow color-theme-tomorrow clang-format aggressive-indent csharp-mode markdown-mode powershell cider fsharp-mode rainbow-delimiters company company-mode flycheck-elm flycheck use-package solarized-theme org evil)))
+ '(safe-local-variable-values
+   (quote
+    ((flycheck-cppcheck-language-standard . "c++11")
+     (flycheck-disabled-checkers quote
+                                 (c/c++-clang)))))
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil))
+
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+;; Material theme
+(use-package material-theme
+  :config
+  (load-theme 'material))
+
+;; Tomorrow Theme
+                                        ;(use-package color-theme-sanityinc-tomorrow
+                                        ;:config
+                                        ;(color-theme-sanityinc-tomorrow-bright))
+
+;; Rainbow Delimiters are pretty!
+(use-package rainbow-delimiters
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+  (add-hook 'latex-mode-hook #'rainbow-delimiters-mode))
+
+(provide '.emacs)
+;;; .emacs end here

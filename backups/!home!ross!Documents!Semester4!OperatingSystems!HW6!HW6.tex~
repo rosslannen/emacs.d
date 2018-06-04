@@ -1,0 +1,64 @@
+\documentclass[letterpaper]{article}
+\title{Homework 6}
+\author{Ross Lannen}
+
+\begin{document}
+\maketitle
+\begin{itemize}
+\item
+  RQ 7.2:
+
+  Relocating processes in memory allows the system to more easily swap processes on and off
+  of disk, as they do not require the same chunk of memory to be available when they are
+  loaded back on.
+\item
+  RQ 7.3:
+
+  Runtime memory locations are unknown to a program at compile time, so their protection cannot
+  be garunteed. Also, processes can use memory varyingly on the heap at runtime, and it is impossible
+  to know how it will act at compile time.
+\item
+  RQ 7.4:
+
+  Different processes may be interconnected, and need to share data between them to complete their
+  task. This data is in a shared region of memory.
+\item
+  RQ 7.5:
+
+  Smaller programs can be loaded in without wasting as much space in memory, and larger programs
+  can occupy more before overlaying.
+\item
+  RQ 7.6:
+
+  Internal fragmentation is wasted space in memory due to a small program entirely taking up
+  a large partition.
+
+  External fragmentation is the process of small holes in memory being created between programs
+  that are dynamically partitioned in memory.
+\item
+  RQ 7.8:
+
+  Pages are the chunks of process data that fit into frames, which are pieces in memory of the
+  same size where they fit.
+\item
+  P 7.11:
+
+  Maintaining a relative address in the IR is prefferable, because it doesn't limit the size of
+  memory to the size of the instruction register, but allows for a larger address space to be
+  used.
+\item
+  P 7.12:
+
+  a: 32 bits
+
+  b: 2^{10} bytes
+
+  c: 16 bits
+
+  d: 2^{16} entries
+
+  e: 15
+\item
+  Q 7.9 (notes):
+\end{itemize}
+\end{document}

@@ -1,0 +1,7 @@
+;;; Directory Local Variables
+;;; For more information see (info "(emacs) Directory Variables")
+
+((c++-mode
+  (flycheck-clang-language-standard . "gnu++11")
+  (flycheck-gcc-language-standard . "gnu++11")))
+

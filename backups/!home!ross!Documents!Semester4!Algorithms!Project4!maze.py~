@@ -1,0 +1,5 @@
+"""
+Maze solver for Algorithms project 4. Solves the Jumping Jim
+maze problem using a graph representation of the maze and
+a graph searching algorithm.
+"""

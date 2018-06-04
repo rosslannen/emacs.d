@@ -1,0 +1,35 @@
+(ns simple-app-clj.db
+  (:require [clojure.java.jdbc :as jdbc]
+            [clj-time.coerce :as coerce]
+            [clj-time.format :as format]))
+
+(def db-spec {:dbtype "h2" :dbname "./simple-app"})
+
+(def custom-formatter (format/formatter :rfc822))
+
+(defn all-posts
+  []
+  (vec (let [posts (jdbc/query db-spec "SELECT * FROM posts ORDER BY timestamp")]
+         (map #(update-in
+                %
+                [:timestamp]
+                (comp
+                 (partial format/unparse custom-formatter)
+                 coerce/from-sql-time)) posts))))
+  
+(defn add-post
+  [{:keys [title body first last]}]
+  (let [results
+        (jdbc/insert! db-spec :posts {:title title
+                                      :body body
+                                      :author_first first
+                                      :author_last last
+                                      :timestamp (java.util.Date.)})]
+    (assert (= (count results) 1))
+     results))
+
+(defn delete-post
+  [id]
+  (let [results (jdbc/delete! db-spec :posts ["id = ?" id])]
+    (assert (= (count results) 1))
+    (first (vals (first results)))))

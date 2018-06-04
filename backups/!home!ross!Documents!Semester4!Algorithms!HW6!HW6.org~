@@ -1,0 +1,24 @@
+#+TITLE: Homework 6
+#+AUTHOR: Ross Lannen
+#+OPTIONS: toc:nil
+#+lATEX_HEADER: \usepackage{minted}
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{algopseudocode}
+* 5.1
+  Graph G_1 only (Pg 184-185)
+
+** Breadth First
+   A, B, D, I, C, E, G, J, f, H
+** Depth First
+   A, B, C, E, D, G, H, F, J, I
+* 5.4
+(Pg 185)
+
+* 5.6
+a, b only (Pg 185-186)
+
+* 5.18
+(Pg 188)
+
+* 5.30
+(Pg 189)

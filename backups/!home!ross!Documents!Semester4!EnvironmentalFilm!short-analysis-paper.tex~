@@ -1,0 +1,132 @@
+\documentclass[12pt]{article}
+
+%
+%Margin - 1 inch on all sides
+%
+\usepackage[letterpaper]{geometry}
+\usepackage{times}
+\geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
+
+%
+%Doublespacing
+%
+\usepackage{setspace}
+\doublespacing
+
+%
+%Rotating tables (e.g. sideways when too long)
+%
+\usepackage{rotating}
+
+
+%
+%Fancy-header package to modify header/page numbering (insert last name)
+%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{} 
+\chead{} 
+\rhead{Lannen \thepage} 
+\lfoot{} 
+\cfoot{} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt} 
+%To make sure we actually have header 0.5in away from top edge
+%12pt is one-sixth of an inch. Subtract this from 0.5in to get headsep value
+\setlength\headsep{0.333in}
+
+%
+%Works cited environment
+%(to start, use \begin{workscited...}, each entry preceded by \bibent)
+% - from Ryan Alcock's MLA style file
+%
+\newcommand{\bibent}{\noindent \hangindent 40pt}
+\newenvironment{workscited}{\newpage \begin{center} Works Cited \end{center}}{\newpage }
+
+
+%
+%Begin document
+%
+\begin{document}
+\begin{flushleft}
+
+%%%%First page name, class, etc
+Ross Lannen\\
+Mancus\\
+Environmental Film\\
+March 25 2018\\
+
+
+%%%%Title
+\begin{center}
+  MAKE A TITLE
+\end{center}
+
+
+%%%%Changes paragraph indentation to 0.5in
+\setlength{\parindent}{0.5in}
+%%%%Begin body of paper here
+
+\textit{The Simpsons Movie} is an animated movie directed by David Silverman released in July of 2007. The characters and setting are based off of \textit{The Simpsons} television show,
+following the Simpson family of Homer, Marge, Bart, Maggie, and Lisa. In \textit{The Simpsons Movie} the town of Springfield comes into trouble when the the water supply becomes so
+polluted that the town is declared an environmental emergency by the EPA. The EPA then places a huge dome over the entire town of Springfield, containing the environmental disaster.
+The EPA then attempts to blow up the town by throwing a bomb into the dome. Homer and Bart save the town at the last second by throwing the bomb outside the dome before it blows up,
+saving the town and destroying the dome. In the film, living alone and away from civilization is portrayed as pure and virtuous, and a good thing for nature as a whole. Conversely,
+civilization is portrayed as being evil and bad for the environment.
+
+When trying to escape the EPA after being left outside the dome, the Simpsons family follows Homer to live by themselves in a cabin in Alaska. After being pushed inside his house
+by an avalanche, Homer sees a perfect opportunity to get romantic with Marge. He produces his family, and proclaims ``Well Marge, we are separated from the kids by a wall of snow.
+All of my dreams are about to come true.'' This kicks off the music, a fast light-hearted tune with high pitched vocals. The song has a clear romantic tone to it, indicating the
+intimacy that is about to go down.
+
+Just as Homer goes to close the curtains on the window, two small blue birds burst through the window, and begin chirping at a high pitch to the
+music. They swiftly lift Homer's jacket off and drop it on the dresser. Soon after, the window on the other side of the bedroom burst open, followed by 2 deer --- an adult, and a small
+child deer. The young deer stares up innocently at Marge, eyes large. The small deer rushes forward and tugs off Marge's scarf. Following suit, the parent deer uses it's antlers to
+rip up the back of Marge's dress, and it drops to the ground. Marge is left standing in a skimpy piece of lingerie. During this, the music swells in volume.
+Now back to Homer and the birds, as a large flocks of small blue birds fly
+through the window, followed by a bald eagle. They fly to Homer and shredded his clothes to pieces, leaving him in a pair of underwear.
+
+The camera now pans back to the bed which is now
+filled with all variety of woodland critters, looking wide-eyed and innocent staring expectantly towards Homer. Homer and Marge make their way towards the bed, the camera quickly zooming
+in for a close up shot on the two holding hands. As Homer and Marge make their way towards the bed, the animals group
+in the corner. The music concludes, and the animals gaze expectantly towards the bed. The parent deer covers the eyes of it's child, preserving it's young innocence. The scene ends,
+leaving the rest of the interaction to the imagination of the viewer.
+
+Throughout this scene, the wild woodland animals are clearly on the side of the Simpsons. They are actively pushing for Homer and Marge to have a great time in Alaska --- rewarding
+them for taking the trip north in the first place. In this scene, and in Homer's mind when deciding to travel north, Alaska is seen as the perfect natural get away. Alaska is the
+perfect wilderness to escape to, and is a place of rebirth for the Simpsons family. Alaska here is the more modern sense of wilderness, as a place of escape from society to a more
+spiritual and pure place. As stated by Cronon in \textit{The Trouble with Wilderness}, ``Wilderness had once been the antithesis of all that was orderly and good\ldots yet now it
+was frequently linked to Eden itself\ldots one by one, various corners of the American map came to be designated as sites whose wild beauty was so spectacular that a growing number
+of citizens had to visit and see for themselves'' (Cronon, 72). Homer fits this description perfectly, pursuing the very corner, north-west to be specific, of the United States
+to find a place of natural beauty for his family. And when he arrives this nature greets him with open arms, evidenced by all the love and affection him and his family receives from the various
+animals. Nature as a collective unit in \textit{The Simpsons Movie} is rewarding the family for shrugging off the evils of civilization, and their polluting damaging ways.
+
+Animals in this scene are also depicted to be friendly and personable towards humans, in almost a domesticated dog-like fashion. This aligns with the theories of some environmental
+thinkers such as Donna Haraway, who argues ``Humans and dogs do not exist as separate entities but, instead, have co-constituted each other through their significant relations
+across evolutionary time'' (Alaimo, 10). Being close to nature in the way the Simpsons are gives non-human and human animals a certain bond that is shown in this scene, putting
+both groups on a same team of sorts against the horrors of civilized America.
+
+Although the family eventually leaves the wilderness of Alaska, this does not go against this theory of Alaska being a pure and great place, but acts as an extension of it. Leaving Alaska
+is not a wish of Homer and Marge to leave the perfection that they have found in the north, but instead an attempt to spread the greatness they have discovered. After finding the
+perfection that an untarnished nature can provide to humans, they are reborn --- ready to salvage the rest of Springfield from their demise inside the dome. Springfield suffers
+from the plight of civilization, both by common people in the form of pollution; and by governmental corruption and misdirection in the form of the dome and the bomb. At the beginning
+of the movie, Homer was the pinnacle of society's issues. He dumped a tank of pig poop into the town's water supply just so he could eat a free donut, a direct nod to the consumerism
+that is shown by the movie to harm the environment and cause such bad pollution. However, Alaska changes Homer, giving him a new heart. Homer has
+to become a savior of the people, reborn and purified by his time away from other people. This virtue could have only been found in the the wild non-human nature of Alaska.
+\newpage
+
+%%%%Works cited
+\begin{workscited}
+
+\bibent
+Alaimo, Stacy. \textit{Keywords for Environmental Studies: Animal.} Edited by Joni Adamson et al. New York University Press, 2016.
+
+\bibent
+Cronon, W. \textit{The Trouble with Wilderness.} Shiplee, B, 2004.
+
+\end{workscited}
+
+\end{flushleft}
+\end{document}
+\}

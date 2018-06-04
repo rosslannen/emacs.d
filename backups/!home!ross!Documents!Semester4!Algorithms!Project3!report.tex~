@@ -1,0 +1,384 @@
+% Created 2018-03-21 Wed 16:30
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{minted}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{minted}
+\usepackage[margin=1in]{geometry}
+\usepackage{algpseudocode}
+\author{Ross Lannen, Evan Bergo, Peng Gao}
+\date{\today}
+\title{Dynamic Programming}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\section{Dynamic Programming Algorithm and Theory}
+\label{sec-1}
+\subsection{Recursive Approach}
+\label{sec-1-1}
+\subsubsection{Inputs and Output}
+\label{sec-1-1-1}
+We define two inputs to the recursive function. The first is $daysLeft$ ---
+the number of days left before the end of day 0 when the shop closes.
+The seconds is $galLeft$ --- the amount of gas in gallons left over from
+they day before.
+
+The output of the function is the minimum cost of purchasing gas.
+
+In addition, there are multiple constants in the problem that influence
+the execution of the problem, although are not inputs to the recursive
+definition of the solution:
+
+\begin{itemize}
+\item $n$: The number of days the station is open
+
+\item $c$: The per gallon cost of storing gas overnight
+
+\item $P$: The fixed per order price of gas
+
+\item $L$: The maximum overnight capacity of the gas tank at the station
+
+\item $g$: An array of the amount of gas being sold by the station
+\end{itemize}
+
+\subsubsection{Base Case}
+\label{sec-1-1-2}
+The base case for this problem is when the days remaining until the close
+of the station is 0, and the station closes. At this day there are no more
+customers to be served, no gas has to be purchased by the station, and there
+is 0 gallons of gas in the tank. This all means that the cost operation for
+this day is 0.
+
+$daysLeft = 0 \to cost = 0$    
+
+\subsubsection{Recursive Relation}
+\label{sec-1-1-3}
+To find the minimum cost at any given day, 2 things must be considered. First
+is the cost of the current day which consists of the price of purchasing gas ---
+if purchased --- and the cost of storing the gas remaining from that day \eqref{eq:1}, \eqref{eq:2}
+Second is the minimum cost of all days after the current day given the purchasing of
+the current day. This is where the recursive call happens, feeding it one less
+than the current number of days before closing, and the remaining gallons left
+in the tank based on the days purchasing dicisions and selling projections.
+
+A range of both of these values is calculated across the range of possible gas
+purchases for the day. This range is based on the selling projections given by
+$g_{i}$, the gas remaining from the previous day, and the size of the gas tank.
+Enough gas must be purchased to sell to that days customers, but the gas left
+over from the previous day and the gas purchased that day, minus the gas sold,
+must be able to fit in the tank for that night \eqref{eq:3}, \eqref{eq:4}.
+
+At each value of gas purchases across this range, the current days cost and
+the minimum of the remaining days is added \eqref{eq:5}. The minimum of these sums is the
+return of the function, and the solution at the given number of remaining
+days and left over gallons. To find the solution to the given problem, the
+function is called with $n$ number of days remaining, and $0$ gallons of gas
+in the tank, as defined in the problem.
+
+\subsubsection{Equations}
+\label{sec-1-1-4}
+Current days cost if gas is purchased:
+\begin{equation}
+\label{eq:1}
+curCost = P + (galLeft + galPurchased - galSold) * c
+\end{equation}
+
+Current days cost if no gas is purchased:
+\begin{equation}
+\label{eq:2}
+curCost = (galLeft - galSold) * c
+\end{equation}
+
+Lower bound for possible purchased gas if greater than 0:
+\begin{equation}
+\label{eq:3}
+lBound = g[i] - galLeft
+\end{equation}
+
+Upper bound for possible purchased gas:
+\begin{equation}
+\label{eq:4}
+uBound =g[i] + L - galLeft
+\end{equation}
+
+Total cost for given days remaining:
+\begin{equation}
+\label{eq:5}
+cost = curCost + f(\{daysLeft - 1\}, \{galLeft + galPurchased - galSold\})
+\end{equation}
+Minimum of this from $galPurchased$ over the range $lbound$ to $rbound$ gives the solution
+\subsection{Dynamic Pseudocode}
+\label{sec-1-2}
+\begin{algorithmic}
+\State{} $g$, $n$, $c$, $P$, $L$ $\gets$ Problem Constants
+\Function{$gasCost$}{$daysLeft$, $galLeft$}
+  \State{} $table$ $\gets$ n by L matrix
+  \State{} $table[0]$ $\gets$ $0$
+  \For{$i$ $\gets$ $1$ to $n$}
+    \For{$j$ $\gets$ $0$ to $L$}
+      \State{} $galReq$ $\gets$ $g[n - i]$
+      \State{} $lBound$ $\gets$ if $galReq - j > 0$ then $galReq - j$ else $0$
+      \State{} $uBound$ $\gets$ $galReq + L - j$
+      \State{} $min$ $\gets$ $MAX$
+      \For{$galPurchased$ $\gets$ $lBound$ to $uBound$}
+        \State{} $cost$ $\gets$ $0$
+        \If{$galPurchased$ $\neq$ $0$}
+          \State{} $cost$ $\gets$ $P + (j + galPuchased - galReq) * c$
+        \Else{}
+          \State{} $cost$ $\gets$ $(j + galPuchased - galReq) * c$
+        \EndIf{}
+        \If{$min < cost$}
+          \State{} $min$ $\gets$ $cost$
+        \EndIf{}
+      \EndFor{}
+      \State{} $table[i][j]$ $\gets$ $min$
+    \EndFor{}
+  \EndFor{}
+  \State{} \Return{} $table[daysLeft][galLeft]$
+\EndFunction{}
+\end{algorithmic}
+\subsection{Traceback Algorithm}
+\label{sec-1-3}
+The traceback algorithm repeats some of the computations in the dynamic
+algorithm as a way to determine what path through the table was taken,
+and to determine when purchases were actually made. Returned is a dictionary
+mapping the days gassed was purchased to the amount of gas purchased on that
+day.
+\begin{algorithmic}
+\State{} $n$, $c$, $P$, $L$ $\gets$ Problem Constants
+\Function{$traceback$}{$table$}
+  \State{} $purchases$ $\gets$ empty dict
+  \State{} $j$ $\gets$ $0$
+  \For{$i$ $\gets$ $n$ to $0$}
+    \State{} $galReq$ $\gets$ $g[n - i]$
+    \State{} $lBound$ $\gets$ $\gets$ if $galReq - j > 0$ then $galReq - j$ else $0$
+    \State{} $uBound$ $\gets$ $galReq + L - j$
+    \State{} $min$ $\gets$ $MAX$
+    \State{} $finalGals$ $\gets$ $0$
+    \For{$galPurchased$ $\gets$ $lBound$ to $uBound$}
+      \State{} $cost$ $\gets$ $0$
+      \If{$galPurchased$ $\neq$ $0$}
+        \State{} $cost$ $\gets$ $P + (j + galPurchased - galReq) * c$
+      \Else{}
+        \State{} $cost$ $\gets$ $(j - galReq) * c$
+      \EndIf{}
+      \State{} $costTot$ $\gets$ $cost + table[i - 1][j + galPurchased - galReq]$
+      \If{$costTot < min$}
+        \State{} $min$ $\gets$ $costTot$
+        \State{} $nextj$ $\gets$ $j + galPurchased - galReq$
+        \State{} $finalGals$ $\gets$ $galPurchased$
+      \EndIf{}
+    \EndFor{}
+    \State{} $j$ $\gets$ $nextj$
+    \If{$finalgals$ $\neq$ $0$}
+      \State{} \Call{$add$}{$purchases$, $n - i$, $finalgals$}
+    \EndIf{}
+  \EndFor{}
+  \State{} \Return{} $purchases$
+\EndFunction{}
+\end{algorithmic}
+\section{Algorithm Complexity}
+\label{sec-2}
+The complexity of the dynamic algorithm given above is $O(n)$. This is
+due to having an outer for loop from $1$ to $n$, looping $n$ times. Although
+there are other loops within the algorithm, these are dependent on the
+value of $L$. All inner loops and operations are independent of $n$,
+making the complexity linear in terms of $n$.
+\section{Implimentation}
+\label{sec-3}
+\subsection{Code}
+\label{sec-3-1}
+\subsubsection{Global Variables}
+\label{sec-3-1-1}
+\begin{minted}[]{python3}
+"""
+Global Variables that control behavior of the algorithm. These are set by the
+read_file function given later, and correspond directly to values read from
+the input file.
+"""
+n = 15  # number of days until closing
+L = 6  # capacity of tank
+P = 17  # fixed delivery price
+c = 4  # price per gallon per night
+g = [4, 3, 1, 4, 2, 2, 4, 3, 1, 6, 6, 1, 5, 5, 5]  # projected orders
+\end{minted}
+\subsubsection{Dynamic Algorithm Implimentation}
+\label{sec-3-1-2}
+\begin{minted}[]{python3}
+def dynamic_gas(days_remaining, gallons_remaining):
+    """
+    Dynamic solution to gas station problem for Algo
+    Project 3. Calculates entire table regardless
+    of inputs, inputs only used to pull final value
+    out of table.
+
+    inputs
+        days_remaining (int): days until close
+        gallons_remaining (int): gallons of gas remaining
+                                from night before
+
+    return
+        (int, 2D list):
+        (minimum cost for given inputs, table of values)
+    """
+    table = [[None for x in range(L + 1)] for y in range(n + 1)]
+    table[0] = [0] * (L + 1)
+    for i in range(1, len(table)):
+        for j in range(0, len(table[i])):
+            gallons_needed = g[len(g) - i]
+            excess = gallons_needed - j
+            lower_bound = excess if excess > 0 else 0
+            upper_bound = gallons_needed + L - j
+            min_cost = -1
+            for gallons_purchased in range(lower_bound, upper_bound + 1):
+                current_cost = 0
+                if gallons_purchased != 0:
+                    current_cost = P + \
+                        (j + gallons_purchased - gallons_needed) * c
+                else:
+                    current_cost = (j - gallons_needed) * c
+                total_cost = current_cost + \
+                    table[i - 1][j + gallons_purchased - gallons_needed]
+                if min_cost == -1 or total_cost < min_cost:
+                    min_cost = total_cost
+            table[i][j] = min_cost
+    return (table[days_remaining][gallons_remaining], table)
+\end{minted}
+\subsubsection{Traceback Algorithm Implimentation}
+\label{sec-3-1-3}
+\begin{minted}[]{python3}
+def traceback(table):
+    """
+    Traces back through table from dynamic solution to
+    find where purchases were made, and how much they
+    were for.
+
+    inputs
+        table (2D list): 2D table of inputs from dynamic solution
+
+    return
+        list of (int, int): list of tuples in form (day number, gallons)
+    """
+    purchases = []
+    j = 0
+    for i in range(len(table) - 1, 0, -1):
+        gallons_needed = g[len(g) - i]
+        lower_bound = gallons_needed - j if gallons_needed - j > 0 else 0
+        upper_bound = gallons_needed + L - j
+        min_cost = -1
+        final_gallons_purchased = 0
+        for gallons_purchased in range(lower_bound, upper_bound + 1):
+            current_cost = 0
+            if gallons_purchased != 0:
+                current_cost = P + (j + gallons_purchased - gallons_needed) * c
+            else:
+                current_cost = (j - gallons_needed) * c
+            total_cost = current_cost + \
+                table[i - 1][j + gallons_purchased - gallons_needed]
+            if min_cost == -1 or total_cost < min_cost:
+                min_cost = total_cost
+                next_j = j + gallons_purchased - gallons_needed
+                final_gallons_purchased = gallons_purchased
+        j = next_j
+        if (final_gallons_purchased != 0):
+            purchases.append((len(table) - i, final_gallons_purchased))
+    return purchases
+\end{minted}
+\subsubsection{Helper Functions}
+\label{sec-3-1-4}
+\begin{minted}[]{python3}
+def read_file(filename):
+    """
+    Read from file with format given by the problem
+    document
+
+    inputs
+        filename (str): file to read from
+
+    return
+        0 on success
+    """
+    with open(filename) as f:
+        n, L, P, c = f.readline().split()
+        g = f.readline().split()
+    return 0
+
+def write_file(filename, cost, days, purchases):
+    """
+    Write results to a file with format given by
+    the problem document
+
+    inputs
+        filename (str): file to write to
+        cost (int): total cost calculated
+        days (int): number of days gas was purchased
+        purchases ([(int, int)]): list of tuples showing purchases
+                                  of gas as (date, amount)
+
+    return
+        0 on success
+    """
+    with open(filename, 'w') as f:
+        f.write(str(cost) + '\n')
+        f.write(str(days) + '\n')
+        for date, gallons in purchases:
+            f.write(str(date) + ' ' + str(gallons) + '\n')
+    return 0
+\end{minted}
+\subsubsection{Sample Execution}
+\label{sec-3-1-5}
+\begin{minted}[]{python3}
+"""
+Reads input from example.txt, calculates cost and cost
+table, traces back through table to find when purchases are made
+and writes the solution to output.txt.
+"""
+read_file('example.txt')
+cost, table = dynamic_gas(n, 0)
+purchases = traceback(table)
+write_file('output.txt', cost, n, purchases)
+\end{minted}
+\subsection{Output}
+\label{sec-3-2}
+\subsubsection{Input File}
+\label{sec-3-2-1}
+\begin{minted}[]{text}
+15 6 17 4
+4 3 1 4 2 2 4 3 1 6 6 1 5 5 5
+\end{minted}
+\subsubsection{Output}
+\label{sec-3-2-2}
+\begin{minted}[]{text}
+204
+15
+1 8
+4 8
+7 8
+10 6
+11 7
+13 5
+14 5
+15 5
+\end{minted}
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}

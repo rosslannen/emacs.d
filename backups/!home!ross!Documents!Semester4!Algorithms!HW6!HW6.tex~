@@ -1,0 +1,90 @@
+% Created 2018-04-04 Wed 19:32
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\usepackage{minted}
+\usepackage{minted}
+\usepackage[margin=1in]{geometry}
+\author{Ross Lannen}
+\date{\today}
+\title{Homework 6}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 25.2.2 (Org mode 8.2.10)}}
+\begin{document}
+
+\maketitle
+\section{5.1}
+\label{sec-1}
+Graph G$_{\text{1}}$ only (Pg 184-185)
+
+\subsection{Breadth First}
+\label{sec-1-1}
+A, B, D, I, C, E, G, J, f, H
+\subsection{Depth First}
+\label{sec-1-2}
+A, B, C, E, D, G, H, F, J, I
+\section{5.4}
+\label{sec-2}
+(Pg 185)
+
+\subsection{Forward Edges}
+\label{sec-2-1}
+Let nodes a, b, c be in graph G, where a is an ancestor of b, and b is an ancestor of
+c. Let there be a foward edge between node a and c. In a BFS, this edge would have been
+discovered as a tree edge when the search was done on node a, and it would no longer be
+classified as a forward edge. Therefore, tree edges cannot exist.
+
+\subsection{Back edges}
+\label{sec-2-2}
+Because the graph is undirected, a back edge and a forward edge are the same thing, so
+back edges cannot exist following the same logic as the forward edge.
+\section{5.6}
+\label{sec-3}
+a, b only (Pg 185-186)
+\subsection{a}
+\label{sec-3-1}
+This graph would consist of one node that connects to every other node in the graph.
+The search would have to start at the connecting node, and every node would be labeled
+as discovered before any are completed.
+\subsection{b}
+\label{sec-3-2}
+This graph would be a single connected line of nodes, and the search would start at one
+of the ends. The search would label each as discovered going away from the start node,
+and then completed the opposite direction once the end was reached.
+\section{5.18}
+\label{sec-4}
+(Pg 188)
+
+Create a graph with each movie represented as a node. For each person who wishes to
+see 2 movies, put an edge between them. Then run a 2 color algorithm on the graph,
+with the 2 colors representing the two days of the weekend. If the 2 color succeeds,
+then a schedule exists so that every customer can watch their movies. The 2 color
+algorithm functions by running a BFS, where each node is assigned a Saturday, or
+Sunday --- opposite of the parent node.
+\section{5.30}
+\label{sec-5}
+(Pg 189)
+
+Every bridge in a DFS of an undirected connected graph will be a tree edge. This is
+because every other edge --- forward, back, and cross --- would indicate a cycle in
+the graph that includes the bridge. But if a bridge were to be in a cycle, that would
+mean there is another way between the two groups of nodes --- meaning the edge is not
+a bridge.
+% Emacs 25.2.2 (Org mode 8.2.10)
+\end{document}

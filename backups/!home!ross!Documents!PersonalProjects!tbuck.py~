@@ -1,0 +1,4 @@
+if __name__ == '__main__':
+    answer = input('Is your name connor?').lower()
+    if answer in ['y', 'yes', 'ya', 'yup']:
+        print('You are gay')

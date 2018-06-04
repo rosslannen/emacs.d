@@ -1,0 +1,522 @@
+% Created 2018-03-09 Fri 11:21
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{listings}
+\author{Ross Lannen}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Ross Lannen},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.2.2 (Org mode 9.0.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+
+\section{Week 1: The World Today}
+\label{sec:orgd13a66d}
+\subsection{The 99 Best Things that Happened in 2017 - Angus Hervey}
+\label{sec:orgbbef7d3}
+\subsubsection{Quote}
+\label{sec:orgfb202cb}
+"In the United States, abortion rates have reached their lowest level
+since 1973"
+
+\subsubsection{Response}
+\label{sec:orga8272ca}
+This to me doesn't clearly indicate an increase in global health, but
+more a change in the political climate in the U.S. Because abortions
+are a highly controversial topic in the U.S., the abortion numbers
+are not just impacted by increases in birth control or general health,
+but can be impacted by the republican controlled government currently
+in office.
+
+\subsubsection{Quote}
+\label{sec:orgf313680}
+"Eleven countries continued their plan to build a wall of trees from east
+to west across Africa in order to push back the desert"
+
+\subsubsection{Response}
+\label{sec:orgbf3c709}
+I had no idea that planting trees was all it could take to reclain land from
+desert. If I had to guess, it was based much more upon the climate of the area
+than the vegetation present. I know that deserts around the world have been
+expanding and getting hotter, but didn't know the solution could be this easy.
+\subsection{Significant Impact on U.S. Interests}
+\label{sec:orgffeebdf}
+\subsubsection{Quote}
+\label{sec:org2c47fda}
+"In December 2017, President Donald J. Trump recognized Jerusalem as the capital
+of Israel and announced his intention to construct a U.S. embassy there, reversing
+longstanding U.S. policy."
+
+\subsubsection{Response}
+\label{sec:org0a291e3}
+What was the U.S. position on the issue before this? From my understanding the U.S.
+has always been close allies of Israel, and would support Israel in whatever they
+claim their capital is - which according to the article is Jerusalem. I am not sure
+however on U.S. standings with Palestine, and probably explains the 
+
+\subsubsection{Quote}
+\label{sec:orgac4c244}
+"There is concern that a third intifada could break out if the cease-fire does not
+hold and the renewed October 2015 tensions escalate into large scale violence."
+
+\subsubsection{Response}
+\label{sec:org63172f7}
+I personally don't seeing this being resolved anytime within the near future.
+Both sides here seem so intrenched in the ideas about Jerusalem and the geography
+of the region, that they won't give up their views or be satisfied regardless
+of what the U.S. is trying to do in the region.
+\subsection{Critical Impact on U.S. Interests}
+\label{sec:org9524cfd}
+\subsubsection{Quote}
+\label{sec:orga9ddbe2}
+"North Korea's government has continued its aggressive and erratic behavior, as
+demonstrated by recent military and cyber probocations\ldots{}"
+
+\subsubsection{Response}
+\label{sec:orgcc40c67}
+The part I find more surprising about North Korea's aggressions is the cyber aspect.
+Nuclear weapons have existed and have been capable of use since the second world war,
+and as Korea is a ways behind lots of the world in many ways them aquiring nukes is
+not a huge surprise - it was going to happen eventually. Cyber attacks however require
+a much more modern understanding of the world, along with a strongly educated population.
+The ability of an almost 3rd world country to commit cyber attacks is incredible.
+\section{Week 2: The World Today}
+\label{sec:org81f7c47}
+\subsection{10 Conflicts to Watch in 2018 - Robert Malley}
+\label{sec:org9c05e75}
+\subsubsection{Quote}
+\label{sec:org4d6a762}
+"It's not all about Donald Trump. That's a statement more easily written than believed"
+
+\subsubsection{Response}
+\label{sec:org0b88130}
+This statement really hit home, that its a shock that not all top U.S. conflicts are
+caused by our presidents actions. He has been involved in so much conflict over the past
+year, that to have something not caused by him is surprising.
+
+\subsubsection{Quote}
+\label{sec:orgf653140}
+"Trump wasn't shaping the public mood. He was reflecting it."
+
+\subsubsection{Response}
+\label{sec:orgfc28d47}
+I often wonder how the world would be different if a different president was elected.
+Many things have changed over the past year, but the question arises - where does it
+come from? Does it come from the election of the president itself, or from the people
+who share his views and elected him? Would the rising issues of white suppremesism,
+race problems, nationalism, and other problems become as prominent as they are if a
+different leader was elected? I believe they would have, because its the citizens
+that drive a country, not the government in the end.
+
+\subsubsection{Quote}
+\label{sec:org260088c}
+"The conflict in eastern Ukraine has claimed over 10,000 lives and constitutes a grave
+ongoing humanitarian crisis. While it persists, relations between Russia and the West
+are unlikely to improve."
+
+\subsubsection{Response}
+\label{sec:orgf132d75}
+I am surprised that Ukraine is still seen as a conflict to watch in 2018, as I thought
+the majority of the conflict was resolved in early 2017. Although I know Putin wants
+Ukraine back in Russia's control, he knows that to take it by force would be very bad
+for his public image in the world, another thing he does not need on his plate.
+\subsection{Wars of the World - Perry Cammack}
+\label{sec:org68cae2d}
+\subsubsection{Quote}
+\label{sec:org5776773}
+"One study found that the average duration of civil wars increased from five
+years in 1950 to fifteen years by 2000."
+
+\subsubsection{Response}
+\label{sec:org869762b}
+This is very disconcerting to me. I like to think that ever since the cold war
+the world has become a less violent place, and in some respects it has. But in
+others, like issues of civil wars, this shows a trend in the opposite direction.
+I am struggling to think why this might be the case, although I feel like it might
+have something to do with foreign involvement in issues.
+
+\subsubsection{Quote}
+\label{sec:org6e48c05}
+"Both the capacity and willingness of the international community to meaningfully
+respond to conflicts has evaporated."
+
+\subsubsection{Response}
+\label{sec:org814a4fc}
+This comes as little surprise to me, as this mirrors the political climate in the
+United States quite heavily. This feeling of isolationism is one of the main
+factors that got president Trump elected into office in 2016. The international
+community seems to be tiring of having to constantly meddle in the affairs of
+other countries, and is taking more interest in dealing with domestic issues.
+There seems to be some sort of feedback involved - where the longer a conflict
+lasts, the more others do not want to get involved, and it lasts longer.
+
+\section{Week 3: Introduction to Globalization}
+\label{sec:org614cd9d}
+\subsection{Globalization Chapter 1}
+\label{sec:orgd39a2ae}
+\subsubsection{Quote}
+\label{sec:orgf1fe990}
+"As he directs his words of contempt for the United States and its allies
+at his hand-held microphone, his retreating sleeve exposes a stylish sports
+watch\ldots{} The emerging consensus points to a Timex product."
+
+\subsubsection{Response}
+\label{sec:org82666ad}
+Although its probably in bad taste given the situation, I personally find
+the irony here to be hilarious. It reminds me heavily of the current situation
+in North Korea - the leader there daily shuns and spouts awful things about
+and towards the western world, but is also one of the largest consumers of
+many of the western world's finest goods. Expensive cars, alcahol, and other
+such luxuries that come from his 'enemies'. I also think of the way that the
+Islamic State has taken to places like Twitter to recruit new members, but
+most of the prominent social media websites being used are all created and
+housed within the United States. Without their enemies, their power and
+influence would be nowhere near as strong.
+
+\subsubsection{Quote}
+\label{sec:orga681b8f}
+"The ancient Buddhist parable of the blind scholars and their encounter with
+the elephant helps to illustrate the nature of the academic controversy over
+the various dimensions of globalization"
+
+\subsubsection{Response}
+\label{sec:org6cd64c8}
+The story of the blind scholars and the elephant is one of my favorite ideas
+about how a lot of the world works. Many people I believe behave like the 
+blind scholars. They possess some part of the truth - even if it is just enough
+to be truth. However, they refuse to see any other part of the truth because
+it doesn't seem to directly confirm their observations of the world as truth.
+These views I believe come out a lot when talking about either politics or
+religion, and has been a heavy influencer in creating the current political
+climate in the United States.
+\subsection{Globalization Chapter 2}
+\label{sec:orgb7a51c8}
+\subsubsection{Quote}
+\label{sec:org15b19e4}
+"Over time, food surpluses achieved by these early farmers and herders
+led to population increases, the establishment of permanent villages,
+and the construction of fortified towns."
+
+\subsubsection{Response}
+\label{sec:org8d168c8}
+When viewing globalization as the spread of ideas on a global scale,
+the settling of people during the agricultural revolution actaully
+seems like a hinderance in the way of globalization. Before, when
+people were hunter gatherers, they covered vast amounts of land. The
+likelihood of runing into someone from a different part of the world
+was quite high. But after settling, people likely moved very little
+from their cities, decreasing the spread of ideas.
+
+\subsubsection{Quote}
+\label{sec:org95b1973}
+"When the accelerating process of industrialization sharpened existing disparities
+in wealth and well-being beyond bearable limits, many working people in the global
+North began to organize themselves politically in various labour movements and
+socialist parties\ldots{} nationalist ideologies captured the imagination of millions
+of people around the world."
+
+\subsubsection{Response}
+\label{sec:org1fa8613}
+Although this is talking about a period around the early 20th century, a lot of
+this sounds eerily similar to the current political climate in the world. Many
+of the world's elected leaders lean heavy towards nationalist and isolationist
+tendencies. Wealth gaps around the world are also increasing rapidly, although
+the reason and solution is still hotly debated. There are definitly differences
+but the reseblences are a bit unsettling.
+\section{Week 4: Economic and Political Globalization}
+\label{sec:org9f34545}
+\subsection{Globalization Chapter 3}
+\label{sec:org4ee627b}
+\subsubsection{Quote}
+\label{sec:org00e3bf2}
+"They resolved to create a more stable money exchange system in which the value
+of each country's currency was pegged to a fixed gold value of the US dollar."
+\subsubsection{Response}
+\label{sec:org78d32b7}
+It has fascinated me how central the US economy is to the world economy. Although
+the US dollar is no longer tied to the value of gold, many US economic indicators
+still effect the world economies. The value of many investments are tied to the
+value of US government bonds. The US dollar is also seen as one of the most stable
+currencies in the world.
+\subsubsection{Quote}
+\label{sec:org41f084a}
+"The most conservative political parties in Europe and the United States rejected
+those laissez-faire ideas and instead embraced a rather extensive version of state
+intervention propagated by British economist John Maynard Keynes."
+\subsubsection{Response}
+\label{sec:orga629205}
+This philosophy of economic governing is still very prevelant in the world. Keyne's
+polocies and ideas were part of the backing for the bailouts of the '08 housing
+bubble. Other countries around the world apply a very hands on approach to their
+countries economies, and very few places in the world really have a free market
+economy in line with Hayak economic ideals.
+\subsection{Globalization Chapter 4}
+\label{sec:org23eacb9}
+\subsubsection{Quote}
+\label{sec:org4f91c05}
+"Wilson's commitment to the nation-state coexisted with his internationalist dream
+of establishing a global system of collective security under the auspices of a new
+international organization, the League of Nations. His idea\ldots{} was eventually
+realized with the founding of the United Nations in 1945."
+\subsubsection{Response}
+\label{sec:orgf398d4a}
+The UN is a prime example and one of the largest drivers of globalization in the
+modern era. The idea of a globalization forming a large world paradigm aligns
+perfectly with the organization of a global governmental body, exerting very
+limited order over the countries of the world. However, the UN isn't very
+effective as the US walks all over many of the decisions it makes. This is shown
+recently by Trumps decision on Jerusalem in the Middle East.
+\subsubsection{Quote}
+\label{sec:org3600279}
+"Economic forms of interdependence are set into motion by political decisions,
+but these decisions are nonetheless made in particular economic contexts."
+\subsubsection{Response}
+\label{sec:org0918260}
+I believe this observation leads to a lot of terrible decisions by governments.
+Many economic policies and decisions are created as a spur of the moment decision.
+Although many of these seem great at the time, they tend to pile up over time into
+a huge spaggheti mess of laws and regulations that make economic endevers so
+difficult that it slows economic activity.
+\section{Week 5: Global Cities}
+\label{sec:org8f4cc8f}
+\subsection{The Global City: Introducing a Concept}
+\label{sec:orgac82185}
+\subsubsection{Quote}
+\label{sec:orgdc0f925}
+"First, the geographic dispersal of economic activities that marks globalization,
+along with the simultaneious integration of such geopraphically dispersed activities,
+is a key factor feeding the growth and importance of central corporate functions."
+\subsubsection{Response}
+\label{sec:org4a7be5f}
+I find it interesting that the first thing that is said to mark a global city is
+an economic indicator, and not a cultural one. Typically when I think of globalization
+I think of cultural spreading of ideas.
+\subsubsection{Quote}
+\label{sec:org13bcf46}
+"The geography of globalization contains both a dynamic of dispersal and of
+centralization. The massive trend towards the spatial dispersal of economic activities
+at the metropolitan, national, and global level which we associate with globalization
+have contributed to a demand for new forms of territorial centralization."
+\subsubsection{Response}
+\label{sec:orgac13870}
+Globalization would not exist without global cities. Although the world is very much
+connected, it is not connected evenly. Most of these connections occur through these
+global cities, as this is where the centralization of these businesses occur. The
+dispersal of activities is because of the centralization of their headquarters in
+these cities.
+\subsection{Redefining Global Cities: The Seven Types of Global Metro Economics}
+\label{sec:orgd153365}
+\subsubsection{Quote}
+\label{sec:org262daab}
+"This process is not preordained. Africa's urbanization, for instance, has not been
+accompanied by widespread industrialization."
+\subsubsection{Response}
+\label{sec:org7798a59}
+This to me is very puzzling, and distrurbing. To me, industrialization is what makes
+cities successful, and provides the foundation of the urban economy. I believe lots
+of this is due to the governing of those areas, and their innefective policies.
+Industrialization naturally seems to come with urbanization, and when it doesn't
+something else is most likely the issue.
+\subsubsection{Quote}
+\label{sec:org821ae84}
+"China's insertion into the global trade system resulted in significant job losses in
+US labor markets that specialize in manufacturing. In the developing world, there is
+an argument to be made that the globalization of labor, trade, and capital markets,
+along with bringing new knowledge and technologies, has contributed to economic
+instability and rising inequities within nations"
+\subsubsection{Response}
+\label{sec:org229e5d3}
+Many political arguments are based around this fact, and many people in the US blame
+the US trading with China for the instability and wealth inequality in the Country.
+However, rarely discussed is the benefits that this trade brings. Prices across the
+board are lower whenever markets are expanded, effective income and purchasing power
+are increased, and quality of life as a whole rises due to markets becoming larger.
+\section{Week 6}
+\label{sec:orge0ed6b2}
+\subsection{Redefining Global Cities: The Seven Types of Global Metro Economics}
+\label{sec:org89779dd}
+\subsubsection{Quote}
+\label{sec:orgd46c54d}
+"A little under one in size residents of a Global Giant is foreign born."
+\subsubsection{Response}
+\label{sec:orgb0b4860}
+This is what to me truly makes any city a global city. Although much of it is for
+economic reasons, it is the cultural diversity of people from all places of the globe
+that truly make a city global. This is in stark comparison to the smaller places
+that I have lived before, where almost half the people are from the same state, and
+almost all from the same country.
+\subsubsection{Quote}
+\label{sec:org0b527ca}
+"National governments also bear some responsibility for supporting cities that have
+experienced industrial decline as a result of global competition."
+\subsubsection{Response}
+\label{sec:org5e4496b}
+This is a very opinionated statement that is definitly shared by all people. This
+is a liberal stance, stating that it is the job of the government, and therefore
+taxpayers, to help people who are in outdated or outsourced jobs. I know many
+more libertarian minded people who would disagree with this being a role of
+the national government.
+\section{Week 7}
+\label{sec:orgaec2c9a}
+\subsection{Inspiring Future Cities (Pg 6 -- 37)}
+\label{sec:org6b580cf}
+\subsubsection{Quote}
+\label{sec:orgb5c846c}
+"Global citizens are seeking enhanced interaction and multi-layered experiences,
+with technology the key enabler of cultural exchange and engagement. Citizens\ldots{}
+are particularly attuned to sustainability issues, expecting goods and services
+to be produced and delivered responsibly."
+\subsubsection{Response}
+\label{sec:org99254d3}
+I find fault with this. Although there are people in the world who do care about
+these things in their lives, I would say the majority of people living in the city
+have very little mind about these things, especially in developing countries.
+Many people tend to not worry about such things until their own financial situation
+is at a comfortable level, which has not happened for a lot of the world's population.
+\subsubsection{Quote}
+\label{sec:org7ed9bbe}
+"Rudimentary Technology and Business Models: Limited adoption of technology and few
+public-private partnerships"
+\subsubsection{Response}
+\label{sec:org5b0e749}
+Why are public entities seen as such a necessity to future cities? Private industry
+and the free market provide the real power behind cities being the giants they are,
+not the governments that watch over them.
+\section{Week 8: Cultural Challenges of Globalization}
+\label{sec:org191cfcb}
+\subsection{Globalization Chapter 5}
+\label{sec:orgb0575db}
+\subsubsection{Quote}
+\label{sec:orgfc201ce}
+"Does globalization make people around the world more alike or more different?"
+\subsubsection{Response}
+\label{sec:org9dda909}
+I firmly believe more alike. As people learn more about people around the world,
+they pick up different things about them, and as more and more people go through
+this process they become like eachother, absorbing small parts of their culture.
+However, I don't think it will ever come to completion though, as people will
+always hold onto what makes them individuals.
+\subsubsection{Quote}
+\label{sec:org646fe57}
+"During the last two decades, a small group of very large TNCs have come to
+dominate the global market for entertainment, news, television, and film.
+In 2000 only 10 media conglomerates\ldots{} acounted for more than two-thirds
+of the 250 billion in annual worldwide revenues generated by the communications
+industry."
+\subsubsection{Response}
+\label{sec:org9d03a78}
+Although this is all about globalization, it is very important to mention
+that almost all of these companies are American founded and based corporations.
+Globalization happens to all, but by no means does it happen equally.
+\subsection{Globalization Chapter 6}
+\label{sec:orge2928ef}
+\subsubsection{Quote}
+\label{sec:org5543276}
+"Claim 2: Globalization is inevitable and irreversible"
+\subsubsection{Response}
+\label{sec:org2f71d03}
+I have very strange feelings about this claim, mostly based upon the definitions
+of inevitable. If inevitable is taken to mean it is physically impossible for
+globalization to ever be reversed, then I would claim that is false. It is
+entirely possible for nations to almost completely shut out the outside world,
+with N Korea as a prime example. However, with viewing inevitable as an almost
+certainty that things will happen, this would be a more accurate claim. Yes,
+parts of the world could shut itself out, but because there is almost no
+incentive for a nation to do such a thing it will likely never happen on
+a global scale.
+\subsubsection{Quote}
+\label{sec:org0109f8d}
+"The low US unemployment rate in the 1990s, often cited by globalists as
+evidence for the economic benefits of globalization\ldots{}"
+\subsubsection{Response}
+\label{sec:orgcdde819}
+This is a horrible time to look at to analyze the effects of globalization.
+Although it is true that there was low unemployment and lots of economic
+activity during this era, much of this was due to an economic bubble that
+was occuring during that time, and had little to do with globalization.
+Bubbles and recessions have happened both since and before, so pointing
+to this time peroid as an indicator of globalizations power is just silly.
+\subsection{The Clash of Civilizations Twenty Years On (Pg 6 -- 27)}
+\label{sec:org0e1f1fa}
+\subsubsection{Quote}
+\label{sec:org73532a8}
+"By 1991, the Soviet Union and its system as well as its parasitic coterie
+of attendant nations was no more. This left a gulf, a hole, a vacuum. How,
+and with what, to fill it?"
+\subsubsection{Response}
+\label{sec:org49678b1}
+Power vacuums have been one of the reasons that many areas of the world
+that have unstable pasts and history remain unstable today. As an entity
+crumbles, a void is left. This is then filled by usually another entity,
+but due to the rapid change of hands this new entity is just as unstable
+as the last. It is a vicious cycle that is difficult to disrupt.
+\subsubsection{Quote}
+\label{sec:orgcb4a0c2}
+"Time has shown, once again, that anyone who takes seriously the idea of
+a world divided into seven or eight majore civilizations lack the capacity
+to have any possible understanding of our fascinating mosaic of a world
+filled with myriad ideas, norms, beliefs, and conceptions about how the
+world is."
+\subsubsection{Response}
+\label{sec:orgbd8dc80}
+Although this is an opinionated statement, I do agree with much it is
+saying. The world being divided like this, and only focussing on contension
+between these groups makes very little sense to me. For example, if all
+violence and struggle between the United States and other "civilizations"
+was removed from the world, would it be a suddenly peaceful and prosperous
+place? Far from, as internal struggles within all of these civilizations
+is often more prevelant, as it is closer to home to those who live there.
+\section{Citations}
+\label{sec:org028310a}
+Hervey, Angus (2018). The 99 best things that happened in 2017. Quartz.
+1 Jan 2018 \url{https://qz.com/1169003/the-99-best-things-that-happened-in-2017/} 
+
+CFR Global Conflict Tracker - Significant Impact on U.S. Interests, Critical
+Impact on U.S. Interests
+
+Robert Malley (2018). 10 Conflicts to Watch in 2018;
+\url{https://www.crisisgroup.org/global/10-conflicts-watch-2018} 
+
+Cammack, Perry. (2017). Wars of the World.  Carnegie Middle East. December 15,
+2017; \url{http://carnegie-mec.org/diwan/74981?lang=en} 
+
+Steger, MB (2003). Globalization: A Very Short Introduction. 
+
+Sassen, Saskia (2005). The Global City: introducing a Concept. The Brown
+Journal of World Affairs. Vol. XI, issue:2;
+\url{http://www.saskiasassen.com/pdfs/publications/the-global-city-brown.pdf} 
+
+Brookings (2016). Redefining global cities: The Seven Types Of Global Metro
+Economies. Brookings Institution.;
+\url{https://www.brookings.edu/wp-content/uploads/2016/09/metro\_20160928\_gcitypes.pdf} 
+
+WEF (2016). Inspiring Future Cities \& Urban Services Shaping the Future
+of Urban Development \& Services Initiative  2016;
+\url{http://www3.weforum.org/docs/WEF\_Urban-Services.pdf}
+
+The Clash of Civilizations Twenty Years On. e-International Relations
+(Bristol, UK). October 2013.   READ p. 6-27 (4 “chapters”).
+\url{http://www.e-ir.info/wp-content/uploads/Clash-of-Civilizations-E-IR.pdf} 
+\end{document}

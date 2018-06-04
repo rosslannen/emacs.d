@@ -1,0 +1,5 @@
+NAME = maze
+CXXFLAGS += -Wall -g -std=c++11 -I.
+
+$(NAME): main.cpp
+	$(CXX) -o $(NAME) main.cpp -g -Wall

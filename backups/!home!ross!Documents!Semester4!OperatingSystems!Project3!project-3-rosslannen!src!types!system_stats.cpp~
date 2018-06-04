@@ -1,0 +1,9 @@
+#include "types/system_stats.h"
+#include "types/thread.h"
+
+using namespace std;
+
+ostream& operator<<(ostream& os, SystemStats stats) {
+  os << "SYSTEM THREADS:" << endl
+     << "    Total count:" << setw(10) << stats.thread_counts[
+                                                              }

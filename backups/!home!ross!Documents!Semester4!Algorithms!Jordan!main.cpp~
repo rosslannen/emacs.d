@@ -1,0 +1,237 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <cmath>
+#include <queue>
+
+
+// global enumeration: state of node -> undiscovered (WHITE), discovered (GRAY), processed (BLACK)
+enum color { WHITE = 0, GRAY = 1, BLACK = 2 };
+
+
+// 'node_' class
+class node_ {
+public:
+    node_(int row = 0, int col = 0, bool entrance_state = 1) {
+        this->row = row;
+        this->col = col;
+        this->entrance_state = entrance_state;
+    }
+    
+    int row, col;
+    int value;
+    bool entrance_state;   // true(1) = H/V entrance, false(0) = D entrance
+    color state;
+    std::vector<node_*> adj;
+    node_* parent;
+};
+
+
+// function prototypes
+void build_adjacency(std::vector<node_>& graph);
+void get_HV_neighbors(std::vector<node_>& graph, node_& current);
+void get_D_neighbors(std::vector<node_>& graph, node_& current);
+int get_next_direction(node_& current);
+node_* find_node(std::vector<node_>& graph, int row, int col, bool entrance_state);
+void BFS(std::vector<node_>& graph, node_& start);
+void traceback(std::vector<node_>& graph);
+void print_matrix(std::vector<node_>& graph);
+void print_adjacency_graph(std::vector<node_>& graph);
+void print_traceback(std::vector<node_>& path);
+
+
+// main()
+int main() {
+    // initialize
+    std::ifstream maze_input("maze_input.txt");
+    std::vector<node_> graph;
+    
+    // read in contents of file
+    int rows(0), cols(0);
+    maze_input >> rows >> cols;
+    
+    // populate matrix keys
+    int new_int(0);
+    for (int it = 1; it >= 0; it--) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                maze_input >> new_int;
+                node_ new_cell(i % 8, j, it);
+                new_cell.value = new_int;
+                new_cell.state = WHITE;        // undiscovered
+                new_cell.parent = NULL;
+                graph.push_back(new_cell);
+            }
+        }
+        maze_input.clear();
+        maze_input.seekg(0, maze_input.beg);
+        maze_input >> rows >> cols;
+    }
+    
+    // build adjacency matrix
+    build_adjacency(graph);
+    
+    // DEBUG
+    //print_matrix(graph);
+    print_adjacency_graph(graph);
+    
+    // perform traversal algorithm
+    BFS(graph, graph[0]);
+    traceback(graph);
+    
+    return 0;
+}
+
+
+// build_adjacency()
+void build_adjacency(std::vector<node_>& graph) {
+    for (int i = 0; i < graph.size(); i++) {
+        if (graph[i].value != 0) {
+            if (i < graph.size()/2) get_HV_neighbors(graph, graph[i]);
+            else get_D_neighbors(graph, graph[i]);
+        }
+    }
+}
+
+
+// check_HV_neighbors()
+void get_HV_neighbors(std::vector<node_>& graph, node_& current) {
+    int row = current.row;
+    int col = current.col;
+    int value = std::abs(current.value);
+    
+    // check horizontal/vertical neighbors
+    if (row - value >= 0) current.adj.push_back(find_node(graph, row - value, col, get_next_direction(current)));   // N
+    if (col + value < 8) current.adj.push_back(find_node(graph, row, col + value, get_next_direction(current)));    // E
+    if (row + value < 8) current.adj.push_back(find_node(graph, row + value, col, get_next_direction(current)));    // S
+    if (col - value >= 0) current.adj.push_back(find_node(graph, row, col - value, get_next_direction(current)));   // W
+}
+
+
+// get_D_neighbors()
+void get_D_neighbors(std::vector<node_>& graph, node_& current) {
+    int row = current.row;
+    int col = current.col;
+    int value = std::abs(current.value);
+    
+    // check diagonal neighbors
+    if ((row - value >= 0) && (col + value < 8)) current.adj.push_back(find_node(graph, row - value, col + value, get_next_direction(current)));  // NE
+    if ((row + value < 8) && (col + value < 8)) current.adj.push_back(find_node(graph, row + value, col + value, get_next_direction(current)));   // SE
+    if ((row + value < 8) && (col - value >= 0)) current.adj.push_back(find_node(graph, row + value, col - value, get_next_direction(current)));  // SW
+    if ((row - value >= 0) && (col - value >= 0)) current.adj.push_back(find_node(graph, row - value, col - value, get_next_direction(current))); // NW
+}
+
+
+// get_next_direction()
+int get_next_direction(node_& current) {
+    if (current.entrance_state == 1) {  // entered H/V
+        if (current.value >= 0) return 1;  // continue H/V
+        else return 0;   // switch to D
+    }
+    else {  // entered D
+        if (current.value >= 0) return 0;  // continue D
+        else return 1;   // switch to H/V
+    }
+}
+
+
+// find_node()
+node_* find_node(std::vector<node_>& graph, int row, int col, bool entrance_state) {
+    for (int i = 0; i < graph.size(); i++) {
+        if (graph[i].row == row && graph[i].col == col && graph[i].entrance_state == entrance_state) {
+            return &graph[i];
+        }
+    }
+    return NULL;
+}
+
+
+// BFS()
+void BFS(std::vector<node_>& graph, node_& start) {
+    std::queue<node_*> q;        // queue of vertices to visit
+ 
+    // initialize starting point
+    q.push(&start);
+    start.state = GRAY;
+    
+    // begin traversal
+    while (!q.empty()) {
+        
+        // process next node
+        node_* v = q.front();
+        q.pop();
+        v->state = GRAY;
+        
+        for (int i = 0; i < v->adj.size(); i++) {
+            if (v->adj[i]->state == WHITE) {
+                v->adj[i]->state = GRAY;    // processed
+                v->adj[i]->parent = v;
+                q.push(v->adj[i]);         // add to queue
+            }
+        }
+        
+        // node is fully processed
+        v->state = BLACK;
+    }
+}
+
+
+void traceback(std::vector<node_>& graph) {
+    std::vector<node_> traversed_path;
+    
+    // start at endpoint and follow parent-line backward
+    node_ endpoint = graph[63];
+    while (endpoint.parent != NULL) {
+        traversed_path.insert(traversed_path.begin(), endpoint);
+        endpoint = *endpoint.parent;
+    }
+    
+    // push start point
+    traversed_path.insert(traversed_path.begin(), graph[0]);
+    print_traceback(traversed_path);
+}
+
+
+
+// print_matrix()
+void print_matrix(std::vector<node_>& graph) {
+    int counter(0);
+    std::cout << "MATRIX\n-----------" << std::endl;
+    for (int i = 0; i < graph.size()/2; i++) {
+        if (counter == 8) {
+            std::cout << std::endl;
+            counter = 0;
+        }
+        std::cout << graph[i].value << " ";
+        counter++;
+    }
+    std::cout << std::endl << std::endl;
+}
+
+
+// print_adjacency_graph()
+void print_adjacency_graph(std::vector<node_>& graph) {
+    std::cout << "ADJACENCY GRAPH\n--------------------" << std::endl;
+    for (int i = 0; i < graph.size(); i++) {
+        std::cout << "(" << graph[i].row << ", " << graph[i].col << ", " << graph[i].entrance_state << "):";
+        std::cout << " {";
+        for (int j = 0; j < graph[i].adj.size(); j++) {
+            std::cout << " {" << graph[i].adj[j]->row << ", " << graph[i].adj[j]->col << "} ";
+        }
+        std::cout << "}" << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+
+// print_traceback()
+void print_traceback(std::vector<node_>& path) {
+    std::cout << "TRACEBACK\n-------------" << std::endl;
+    for (int i = 0; i < path.size(); i++) {
+        std::cout << "(" << path[i].row << ", " << path[i].col << ") ";
+    }
+    std::cout << std::endl;
+}
+
+
+

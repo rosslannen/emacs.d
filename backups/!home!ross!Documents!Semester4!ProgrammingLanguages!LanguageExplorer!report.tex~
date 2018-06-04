@@ -1,0 +1,149 @@
+\documentclass[11pt, letterpaper]{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage[compact,bf,small]{titlesec}
+\setlength{\parindent}{0mm}
+\setlength{\parskip}{4pt}
+\title{Clojure: a Modern Functional Lisp}
+\author{Ross Lannen}
+\linespread{1.0}
+
+\begin{document}
+\begin{titlepage}
+  \maketitle
+\end{titlepage}
+\section{Introduction to Clojure}
+Clojure is a general purpose programming language. Its main goals are to provide an interactive
+programming environment with a tight developement cycle, that is efficient and robust enough to
+scale into large applications. It is targeted to run on the JVM, and leverage the stability
+that a standard like the JVM brings to production applications. It is made to overcome many of
+the shortcomings of the Java programming language and provide a different alternative to Object
+Oriented programming on the JVM. Clojure was also created to manage parallel programming in a
+simple manor, and makes concurrent programming developer friendly.
+
+\section{History}
+Clojure was first released in 2007, making it a very new language as far as most programming languages
+are concerned. Before the first release it was created entirely by a single man, Richard Hickey.
+He is still the head maintainer of the project, and any modifications to the language are approved
+by him before being published. However, many of the ideas Clojure is built upon have been around
+for decades. The first Lisps were created in the 1950s by John Mcarthy, and many of the defining characteristics
+of those earlier lisps, are seen in Clojure. Due to the nature of Lisps and the macro systems that
+accompany them, very few modifications have been made to the language since its creation.
+
+\section{Classification and Features}
+Clojure is a Lisp dialect. This alone gives it a certain set of properties and features that make
+it a very powerful language, although can be alienating to those not used to it. The largest feature
+is homoiconicity, meaning code is ``Composed of literal representations of its own data structures
+and atomic values\ldots or more casually code-as-data'' (REFERENCE). Lisp code is written using
+data structures that directly represent the Abstract Symbol Tree that the code compiles to. This
+gives the huge advantage that Lisps can be written in Lisps. This is the basis of macros,
+the metaprogramming facility in Lisps. Macros allow Lisps to have a very small central core made
+of just a few special forms, where the remainder of the language syntax and functionality is
+written in the language itself using Macros. Clojure has under 20 special forms that make up the core
+of the language, while every other part of language functionality is either a macro or function
+composed of these pieces. This makes any Lisp, including Clojure, extremely extensible and allows
+for programs to be built from the bottom up. As written about by Paul Graham, founder of Viaweb (now
+Yahoo Store) and partner at Y Combinator: ``Experienced Lisp programmers divide up their programs
+differently\ldots you don't just write your program down toward the language, you also build the
+language up toward the program'' (Graham). Clojure provides this, and enables for very expressive
+and powerful programs.
+
+Clojure also emphasizes a REPL development environment, and strives to create as tight of a
+development cycle as possible. Being able to constantly be writing, evaluating, testing, and
+playing with the program being created makes development faster and safer for the programmer.
+
+Clojure is also a functional language in many aspects. First, functions are treated as first class
+values. This allows for higher order functions to be created, and for functions to be passed around
+the program like any other sort of value. Second, the majority of data structures in Clojure are both
+immutable and persistent in nature. Immutability garuntees that a reference to a data structure will
+always resolve to the same values. This is one of the facilities that makes concurrent programming
+in Clojure easier than many other languages. Multiple threads of execution can work on a data
+structure, and the data will remain the same throughout this processing. The persistance of data
+structures is also important. This means that internally, many data structures with similar values
+share much of teh same space in memory. Many functions in Clojure accept very large data structures,
+modify a small portion of them, and then return the modified structure. Without persistant structures
+this would be very memory intensive. However, because most of the data is shared between the original
+and modified structure, very little extra memory is consumed.
+
+There are some areas where Clojure differs from other functional languages. One of these is dealing
+with side effects and purity of functions. Many clojure functions and facilities interact with the
+outside world, although it is often idiomatic to partition these impure functions to specific parts
+of the program. There are also specific mutable data values in Clojure that are used to handle
+parallel programming, and the overall change of program state in a stable and safe way.
+
+Clojure is a hybrid compiled/interpreted language. The main target for Clojure is JVM bytecode,
+although implimentations also exist for compilation to JavaScript, and the Microsoft Common Language
+Runtime. It is also dynamically typed, as all types are bound at runtime. Clojure is a strongly
+typed language, as it is type safe and does not allow for implicit type conversions in functions.
+
+\section{Evaluation of Language Metrics}
+Lisps as a whole get a lot of flack for being both difficult to read and write due to the alienating
+syntax, seen as an overloaded mess of parenthesis. However, most of this is due to it just being
+different from other programming languages, and actually has many advantages for readability and
+writeability. One of these advantages is order of execution. Many languages have specific rules
+for the order in which expressions are evaluated, and use parenthesis and other syntactic devices
+to control the implicit evaluation of said expressions. But with Lisps, the order of evaluation is
+always straight forward. All calls to macros, functions, or special forms are written as lists, with
+the symbol for the macro, function, or special form as the first element in the list, followed by
+its arguments. Those arguments can be calls to functions themselves, and are seperated by being
+in their own lists. It removes ambiguity from reading the code, and undesireable behavior when writing
+it.
+
+Clojure also improves on other Lisps readability by providing literal syntax for many of the data
+structures used. Lists, vectors, maps, and sets, have different syntax to improve readability of
+code, defined by different delimiters and characters. Combined with a widely used formatting
+standard, Clojure code at face value is quite readable even after working with it for a short
+amount of time.
+
+Basic reliability is where Clojure takes a hit. Because it uses a dynamic typing system, many common type
+errors that would be normally caught at compile time in a static language can sneak their way into
+runtime environments. However, many abstractions in the language ease this pain substancially. Many
+of the common data structures in Clojure share abstractions between them, allowing the same function
+to operate on different types of collections. This means that a function can accept many different
+types of data, and be able to operate on it in the same manor. Exception handling is also more
+difficult in more declarative languages, as opposed to exception handling seen in more imperative
+languages like Java or Python.
+
+Clojure's reliability is bolstered heavily by the provided facilities for parallel programming.
+Immutable data structues, and the strict usage of Clojures reference type make parallelizing
+applications easier on the programmer, and much safer to run. Other abstractions are easily
+built upon these, including functions like pmap. Pmap is just a concurrent version of the normal
+map function provided by the language, and in situations involving lots of expensive computations
+or file IO can provide a huge performance boost just by swapping out a single function call.
+
+Clojure ranks high in feasability. It's main target, the JVM, is already an industry standard. It
+is widely distributed, easy to deploy to, and has many years of developement and libraries built
+around it. It also is platform independent, so Clojure programs can be run anywhere Java programs
+can. JVM bytecode is also highly efficient, as shown by the success of languages like Java, Kotlin,
+and Scala. There is also a compiler for Clojure, written in Clojure, targetting JavaScript called
+ClojureScript, as well as one for the Microsoft CLR.
+The resemblance of all Lisps to the Parse Tree they create makes them very easy to write interpreters
+and compilers for, as evidenced Lisps being one of the first programming languages.
+
+\section{Uniquness and Reasons to Use Clojure}
+Clojure has many unique features, many of which have already been discussed. One of the biggest
+attractors of the language is the compilation of Clojure to both the JVM and JavaScript. This allows
+for a fullstack web application to be developed entirely in a single language. All the way from
+the database interactions, to the serving of HTML and CSS from the server, to the client-side
+JavaScript interactions can be handled in Clojure. This allows for massive amounts of code reuse
+between the front-end and back-end of the web application.
+
+Clojure is also an extremely powerful language for any application. The macro system enables
+code to be evaluated both at compile time and runtime. This enables programmers to make features
+of the program features of the language itself in an almost effortless way. Clojure code is some
+of the most expressive and succinct code in production, and this expressiveness allows developers
+to rapidly produce complex and performant programs.
+
+\section{Syntactic Details and Expressiveness}
+Clojure at its core has only a single syntax for all of its operations. It is built entirely with
+lists, that are evaluated either at runtime or compile time to produce results. Each list has
+either a special form, a function call, or a macro as its first element; and parameters for the
+first element as the following elements. All other syntax built on top of this by the use of macros
+and functions definitions. Clojure also provides other syntactic niceties in the form of pattern
+matching and destructuring of data structures in the form of let expressions. These allow functions
+and other forms to pull certain values out of maps, vectors, and other collections before using them.
+
+\section{Description of Example Code}
+
+\section{References}
+
+\end{document}
